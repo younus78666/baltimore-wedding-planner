@@ -1,0 +1,282 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://baltimoreweddingplanner.com/services/partial-wedding-planning#service',
+  name: 'Partial Wedding Planning',
+  description: 'Partial wedding planning in Baltimore and Maryland. John provides targeted help with vendor sourcing, contract review, budget management, timeline creation, and day-of coordination.',
+  provider: { '@type': 'LocalBusiness', '@id': 'https://baltimoreweddingplanner.com/#business' },
+  areaServed: { '@type': 'State', name: 'Maryland' },
+  offers: { '@type': 'Offer', priceCurrency: 'USD', priceRange: '$800 - $1800', availability: 'https://schema.org/InStock' },
+  serviceType: 'Partial Wedding Planning',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does partial wedding planning include?',
+      acceptedAnswer: { '@type': 'Answer', text: "Partial wedding planning includes up to 10 planning consultations, vendor sourcing for up to 5 categories, contract review for each vendor, budget management, timeline creation, and full day-of coordination from setup through send-off." },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does partial wedding planning cost in Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "Partial wedding planning with John costs $800 to $1,800 for Maryland weddings, depending on how many vendor categories need sourcing and how much budget management is involved. Day-of coordination is included in all partial planning packages." },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between partial planning and full-service planning?',
+      acceptedAnswer: { '@type': 'Answer', text: "Full-service planning starts at engagement and covers everything. Partial planning joins mid-process and focuses on the specific areas where you need professional help. Couples who've already booked some vendors or done initial research typically find partial planning the right fit." },
+    },
+    {
+      '@type': 'Question',
+      name: 'When should I book partial wedding planning?',
+      acceptedAnswer: { '@type': 'Answer', text: "Partial planning works best when booked 4 to 8 months before the wedding. This gives enough time to source any missing vendors, review contracts, build a proper timeline, and prepare for day-of coordination. Closer to the date is still workable, but the earlier the better." },
+    },
+  ],
+};
+
+const included = [
+  'Up to 10 planning consultations (video, phone, or in-person)',
+  'Vendor sourcing for up to 5 categories you choose',
+  'Contract review for each vendor before you sign',
+  'Full budget creation and management',
+  'Detailed 15-minute interval timeline',
+  'Final vendor confirmation calls (2 weeks out)',
+  'Ceremony rehearsal direction (1 hour)',
+  'Full wedding day coordination from setup through send-off',
+  'Emergency kit on hand all day',
+];
+
+const scenarios = [
+  {
+    title: "You've booked your venue and photographer but you're stuck on vendors",
+    detail: "John sources, vets, and negotiates with the specific vendors you still need. He knows which caterers, florists, and DJs are worth the cost at different price points across Maryland, and he'll tell you honestly which choices make a real difference at your budget level.",
+  },
+  {
+    title: "You need contracts reviewed before you sign anything else",
+    detail: "Wedding vendor contracts have clauses most couples miss until it's too late: catering exclusivity requirements, overtime fees, cancellation terms, and tipping policies that aren't disclosed upfront. John reviews every contract and flags anything that could cost you money.",
+  },
+  {
+    title: "You've planned everything but the last 6 weeks feel overwhelming",
+    detail: "Partial planning can start as close as 4 to 6 weeks before the wedding for final-stretch support: vendor confirmation calls, timeline building, rehearsal coordination, and full day-of management. It's where partial planning earns its cost the most.",
+  },
+  {
+    title: "You're not sure how to build a wedding timeline",
+    detail: "A 15-minute interval timeline is one of the most valuable things a planner provides. It tells every vendor exactly where to be and when, which prevents the communication gaps that cause delays and stress on the day. John builds these for all partial planning clients.",
+  },
+];
+---
+
+<Layout
+  title="Partial Wedding Planning Maryland | $800 to $1,800"
+  description="Started planning your Maryland wedding but need targeted help? John offers partial planning for vendor sourcing, contract review, and day-of coordination."
+  canonical="https://baltimoreweddingplanner.com/services/partial-wedding-planning"
+  schema={[schema, faqSchema]}
+>
+  <div class="container">
+    <Breadcrumbs items={[
+      { label: 'Services', href: '/services/full-service-wedding-planning' },
+      { label: 'Partial Planning' },
+    ]} />
+  </div>
+
+  <!-- Hero -->
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container max-w-3xl">
+      <span class="section-label mb-5 block w-fit bg-stone-100 text-stone-700 border-stone-300/50">Targeted Help</span>
+      <h1 class="font-display text-4xl md:text-5xl font-medium text-stone-900 mb-5 leading-[1.15] tracking-tight">
+        Partial Wedding Planning in Baltimore, Maryland
+      </h1>
+      <p class="text-stone-600 font-light text-lg sm:text-xl leading-relaxed mb-4">
+        You've done a lot of the work. Now bring in professional support for the parts that still feel unsettled.
+      </p>
+      <p class="text-stone-600 font-light text-base sm:text-lg leading-relaxed mb-8">
+        Vendor negotiations, contract review, timeline creation, the final-month stretch before your Maryland wedding: John handles whichever of these you need, without requiring you to hand over the whole project.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/contact" class="btn-primary text-base px-8 py-4">Book a Free Consultation</a>
+        <a href="/wedding-planning-packages" class="btn-outline text-base px-8 py-4">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section class="section bg-white" aria-labelledby="included-heading">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2 id="included-heading" class="section-heading mb-5">
+            What Does Partial Wedding Planning Include?
+          </h2>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            Partial planning gives you a professional partner for the specific parts where you're stuck, without paying for full-service management of things you've already handled. You're not handing over the whole project. You're getting expert help where it actually matters.
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            You stay in control of your wedding. John's providing expertise on vendor sourcing and negotiation, contract protection, timeline building, and day-of management. It's the same package whether you need help with one vendor category or five.
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-8">
+            Day-of coordination is always included. Every partial planning client gets John managing the full wedding day from setup through send-off, regardless of what else they've used the package for. You won't be on your own when the day arrives.
+          </p>
+          <a href="/contact" class="btn-primary">Book a Free Consultation</a>
+        </div>
+        <div class="bg-[#FAF1EE] rounded-lg p-8">
+          <h3 class="font-display text-xl font-bold text-charcoal mb-6">Everything Included</h3>
+          <ul class="space-y-3" role="list">
+            {included.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-rose flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-sm font-body text-charcoal-light">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-6 pt-6 border-t border-rose-light/30">
+            <p class="text-sm font-display font-bold text-rose">$800 to $1,800</p>
+            <p class="text-xs text-charcoal-muted font-body mt-1">Depends on vendor categories and planning timeline</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="who-heading">
+    <div class="container max-w-4xl">
+      <h2 id="who-heading" class="section-heading text-center mb-4">
+        Who Is Partial Wedding Planning Right For?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">
+        Partial planning works best for couples who've started but hit a specific wall. If you're not sure whether your situation fits, the free consultation will sort it out quickly.
+      </p>
+      <div class="space-y-5">
+        {scenarios.map((s) => (
+          <div class="bg-white rounded-lg p-6">
+            <h3 class="font-display text-base font-bold text-charcoal mb-3">{s.title}</h3>
+            <p class="text-sm text-stone-600 font-light leading-relaxed">{s.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section bg-white" aria-labelledby="compare-heading">
+    <div class="container max-w-4xl">
+      <h2 id="compare-heading" class="section-heading text-center mb-4">
+        How Does Partial Planning Compare to Full-Service and Day-of?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-10 max-w-2xl mx-auto">
+        Partial planning is the middle option. Here's an honest breakdown so you can figure out which level fits where you are right now.
+      </p>
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-rose-50">
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40 w-1/4"></th>
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40">Day-of Only</th>
+              <th class="text-left p-4 font-display font-semibold text-rose border border-rose-light/40">Partial Planning</th>
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40">Full-Service</th>
+            </tr>
+          </thead>
+          <tbody class="font-body">
+            {[
+              { a: 'Start time', b: '2-3 weeks out', c: '4-8 months out', d: 'At engagement' },
+              { a: 'Vendor sourcing', b: 'None (you booked all)', c: 'Up to 5 categories', d: 'All vendors' },
+              { a: 'Contract review', b: 'Not included', c: 'Included', d: 'Included' },
+              { a: 'Budget management', b: 'Not included', c: 'Included', d: 'Included' },
+              { a: 'Day-of coverage', b: 'Yes (this is the service)', c: 'Included', d: 'Included' },
+              { a: 'Maryland cost', b: '$500 to $1,500', c: '$800 to $1,800', d: '$1,500 to $2,800' },
+              { a: 'Best for', b: "You've planned it all", c: "You've started but need targeted help", d: "You haven't started yet" },
+            ].map((row, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-[#FAF1EE]'}>
+                <td class="p-4 border border-rose-light/30 font-semibold text-charcoal">{row.a}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-muted">{row.b}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-light font-medium">{row.c}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-muted">{row.d}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="faq-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="faq-heading" class="section-heading text-center mb-10">
+        Partial Planning: Common Questions
+      </h2>
+      <div class="space-y-3">
+        {[
+          {
+            q: 'What does partial wedding planning include?',
+            a: "Up to 10 planning consultations, vendor sourcing for up to 5 categories you choose, contract review before you sign, budget management, a detailed timeline, final vendor confirmation calls, rehearsal direction, and full day-of coordination. Day-of coverage is included in every partial planning package.",
+          },
+          {
+            q: 'How much does partial planning cost in Maryland?',
+            a: "Partial planning with John runs $800 to $1,800 depending on how many vendor categories are involved and how much work has already been done. <a href='/wedding-planning-packages' class='text-rose hover:underline'>See the full pricing comparison</a>.",
+          },
+          {
+            q: "What's the difference between partial planning and full-service?",
+            a: "Full-service starts at engagement and manages everything. Partial planning joins mid-process and focuses on specific areas where you need help. If you've already booked your venue and photographer and need help with the rest of the vendors plus day-of management, partial planning is usually the right call.",
+          },
+          {
+            q: 'When should I book partial planning?',
+            a: "Ideally 4 to 8 months before your wedding. That gives enough time to source missing vendors, review contracts, build a proper timeline, and get organized before the final stretch. If you're closer than 4 months out, reach out anyway and John can tell you what's still realistic to accomplish.",
+          },
+          {
+            q: "Can I add partial planning if I've already booked day-of coordination?",
+            a: "Yes. If your planning situation changes after booking and you realize you need more help than day-of coordination provides, John can discuss upgrading to a partial planning package. The day-of coordination fee already paid would apply toward the partial planning cost.",
+          },
+        ].map((faq, i) => (
+          <details class="bg-white border border-rose-light/40 rounded-lg" name="partial-faq" open={i === 0}>
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{faq.q}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 font-light leading-relaxed" set:html={faq.a} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal links + CTA -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="/services/day-of-wedding-coordinator" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Just Need Day-of Help?</h3>
+          <p class="text-sm text-charcoal-muted font-body">Day-of coordination manages your wedding day without the prior planning involvement. Starts at $500.</p>
+        </a>
+        <a href="/wedding-planning-packages" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Compare All Packages</h3>
+          <p class="text-sm text-charcoal-muted font-body">See all four service tiers side by side with pricing and what's included at each level.</p>
+        </a>
+        <a href="/blog/average-wedding-cost-maryland" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Maryland Wedding Costs</h3>
+          <p class="text-sm text-charcoal-muted font-body">Real 2026 data on what Maryland couples spend and how to budget well under $20,000.</p>
+        </a>
+      </div>
+      <div class="bg-[#C89481] rounded-2xl p-10 md:p-14 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-4">Need Help With Part of Your Wedding Planning?</h2>
+        <p class="text-white/80 font-body mb-8 max-w-xl mx-auto">
+          Book a free 30-minute consultation. Tell John where you are in the process and where you're stuck. He'll tell you honestly what partial planning can do for you.
+        </p>
+        <a href="/contact" class="btn-white text-base px-8 py-4">Book My Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</Layout>

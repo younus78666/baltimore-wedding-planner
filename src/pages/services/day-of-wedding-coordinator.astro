@@ -1,0 +1,375 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://baltimoreweddingplanner.com/services/day-of-wedding-coordinator#service',
+  name: 'Day-of Wedding Coordinator',
+  description: 'Professional day-of wedding coordination in Baltimore, Maryland. John manages your entire wedding day timeline, vendors, and logistics so you can be fully present.',
+  provider: {
+    '@type': 'LocalBusiness',
+    '@id': 'https://baltimoreweddingplanner.com/#business',
+    name: 'Baltimore Wedding Planner',
+  },
+  areaServed: { '@type': 'State', name: 'Maryland' },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'USD',
+    priceRange: '$500 - $1500',
+    availability: 'https://schema.org/InStock',
+  },
+  serviceType: 'Day-of Wedding Coordination',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does a day-of wedding coordinator do in Baltimore?',
+      acceptedAnswer: { '@type': 'Answer', text: 'A day-of wedding coordinator manages your entire wedding day timeline, coordinates with all vendors, handles setup logistics, directs the wedding party, and troubleshoots any issues so you and your guests can focus on celebrating.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a day-of wedding coordinator cost in Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "Day-of wedding coordination in Maryland costs between $500 and $1,500 depending on coverage hours and number of venue locations. John's packages start at $500 for ceremonies under 4 hours." },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far in advance should I book a day-of coordinator?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Book your day-of coordinator at least 2-3 months before your wedding date. Peak season dates from May through October fill up faster, so 4-6 months in advance is recommended for summer and fall Maryland weddings.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a coordinator if my venue has one?',
+      acceptedAnswer: { '@type': 'Answer', text: "Yes. A venue coordinator manages the venue's staff, catering, and building operations. A day-of coordinator manages you: your vendors, your timeline, your wedding party. They serve completely different functions." },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is included in day-of wedding coordination?',
+      acceptedAnswer: { '@type': 'Answer', text: "John's day-of coordination includes a pre-wedding planning call, vendor contact confirmation, detailed timeline creation, ceremony rehearsal coordination, full day-of presence from setup through send-off, vendor payment coordination, wedding party direction, guest management, and an emergency kit." },
+    },
+  ],
+};
+
+const whatsIncluded = [
+  "Pre-wedding planning call 2 weeks before your wedding",
+  "Full vendor contact list review and confirmation (we'll catch anything missing)",
+  'Detailed 15-minute interval timeline creation',
+  "Ceremony rehearsal direction (1 hour) so your wedding party isn't guessing",
+  'Day-of presence from setup through send-off (up to 10 hours)',
+  "Vendor arrival coordination and payment management (you won't touch this)",
+  'Wedding party direction and ceremony cueing',
+  'Guest management and seating assistance',
+  "Emergency kit on hand all day",
+  'Venue liaison and setup oversight',
+  'Reception timeline management and cue calls',
+  'End-of-night vendor wrap-up and final walkthrough',
+];
+
+const comparison = [
+  {
+    aspect: 'Who they manage',
+    dayOf: 'You, your vendors, your timeline',
+    venue: 'The venue staff and catering team',
+    fullService: 'Everything, from engagement through reception',
+  },
+  {
+    aspect: 'When they start',
+    dayOf: '2-3 weeks before the wedding',
+    venue: 'Focused on day-of venue operations',
+    fullService: 'From the moment you hire them (6-18 months out)',
+  },
+  {
+    aspect: 'Vendor selection',
+    dayOf: 'Works with vendors you already booked',
+    venue: 'No involvement in outside vendors',
+    fullService: 'Sources and vets all vendors for you',
+  },
+  {
+    aspect: 'Typical cost in Maryland',
+    dayOf: '$500 to $1,500',
+    venue: 'Included in venue fee',
+    fullService: '$1,500 to $2,800',
+  },
+  {
+    aspect: 'Best for',
+    dayOf: 'Couples who planned it themselves and need execution help',
+    venue: 'Managing the space (not your day)',
+    fullService: 'Couples who want someone else to handle everything',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What does a day-of wedding coordinator do in Baltimore?',
+    a: 'A day-of coordinator takes over your entire wedding day timeline from setup through send-off. John confirms all vendor arrivals, manages the ceremony cues, keeps the reception on schedule, handles anything that goes wrong, and makes sure your wedding party knows exactly where to be and when. You get to be a guest at your own wedding.',
+  },
+  {
+    q: 'How much does day-of coordination cost in Maryland?',
+    a: "John's day-of coordination packages start at $500 for ceremonies under 4 hours. Full packages covering ceremony through reception end run $800 to $1,500 depending on event length and venue count. <a href='/wedding-planning-packages' class='text-rose hover:underline'>See full pricing here</a>.",
+  },
+  {
+    q: 'How far in advance should I book a day-of coordinator?',
+    a: "Book 2 to 3 months in advance at minimum. For peak season Maryland weddings (May through October), 4 to 6 months is safer. Saturday dates in Baltimore and Annapolis fill quickly, especially in the fall. Once John's booked for your date, you'll want that peace of mind locked in early.",
+  },
+  {
+    q: "Do I still need a coordinator if my venue has one?",
+    a: "Yes, and this matters a lot. A venue coordinator manages the venue: catering staff, room setup, and building logistics. John manages YOU: your photographers, your DJ, your florist, your wedding party, and your personal timeline. Venue coordinators aren't responsible for your outside vendors or your personal schedule. Those are two very different jobs.",
+  },
+  {
+    q: 'What if something goes wrong on the day?',
+    a: "That's exactly what day-of coordination is for. In 50+ Maryland weddings, John has handled late caterers, missing officiant paperwork, a flower girl meltdown, and a DJ who showed up with the wrong playlist. He's got an emergency kit and contingency plans. You won't even know most of it happened.",
+  },
+];
+---
+
+<Layout
+  title="Day-of Wedding Coordinator Baltimore, MD | From $500"
+  description="Hire a day-of coordinator in Baltimore, MD. John runs your timeline, manages vendors, and handles all logistics so you can enjoy every moment. From $500."
+  canonical="https://baltimoreweddingplanner.com/services/day-of-wedding-coordinator"
+  schema={[schema, faqSchema]}
+>
+  <div class="container">
+    <Breadcrumbs items={[
+      { label: 'Services', href: '/services/full-service-wedding-planning' },
+      { label: 'Day-of Coordination' },
+    ]} />
+  </div>
+
+  <!-- Hero -->
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container">
+      <div class="max-w-3xl">
+        <span class="section-label mb-5 block w-fit">Most Popular Service</span>
+        <h1 class="font-display text-4xl md:text-5xl font-medium text-stone-900 mb-5 leading-[1.15] tracking-tight">
+          Day-of Wedding Coordinator in Baltimore, Maryland
+        </h1>
+        <p class="text-stone-600 font-light text-lg sm:text-xl leading-relaxed mb-4">
+          You've planned everything. Now let John run the day while you live in every moment.
+        </p>
+        <p class="text-stone-600 font-light text-base sm:text-lg leading-relaxed mb-8">
+          Day-of coordination keeps your timeline on track, your vendors accountable, and your attention where it belongs: on your partner, your family, and the people who showed up to celebrate with you.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="/contact" class="btn-primary text-base px-8 py-4">Book a Free Consultation</a>
+          <a href="/wedding-planning-packages" class="btn-outline text-base px-8 py-4">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it is -->
+  <section class="section bg-white" aria-labelledby="what-heading">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2 id="what-heading" class="section-heading mb-5">
+            What Does a Day-of Wedding Coordinator Do?
+          </h2>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            A day-of coordinator takes over your wedding day from setup through send-off so you don't have to manage a single logistical detail. John confirms every vendor, runs the ceremony timeline, keeps the reception on schedule, handles anything that goes sideways, and makes sure your wedding party is in the right place at the right time.
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            The work starts 2 weeks before your wedding, not just on the day itself. John reviews your vendor list, builds a 15-minute interval timeline, contacts every vendor to confirm arrival times, and runs your rehearsal. By the time your wedding day arrives, he knows your event as well as you do.
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-8">
+            Most couples who've done this themselves say the same thing afterward: they spent half the day fielding questions from the caterer, the photographer, and the florist instead of being present. Day-of coordination fixes that.
+          </p>
+          <a href="/contact" class="btn-primary">Book John as Your Coordinator</a>
+        </div>
+
+        <div class="bg-[#FAF1EE] rounded-lg p-8">
+          <h3 class="font-display text-xl font-bold text-charcoal mb-6">Everything Included in Day-of Coordination</h3>
+          <ul class="space-y-3" role="list">
+            {whatsIncluded.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-rose flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-sm font-body text-charcoal-light">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How John's process works -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="process-heading">
+    <div class="container max-w-4xl">
+      <h2 id="process-heading" class="section-heading text-center mb-4">
+        How Does John's Day-of Coordination Work?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">Six steps from booking to send-off. You don't manage any of it.</p>
+
+      <div class="space-y-6">
+        {[
+          {
+            n: '01',
+            title: 'Booking and Date Hold',
+            desc: "Book John for your date and he's locked in. You'll get a confirmation and a planning questionnaire to fill out at your own pace.",
+          },
+          {
+            n: '02',
+            title: 'Pre-Wedding Call (2 Weeks Out)',
+            desc: "John reviews your vendor list, reviews your day-of vision, and asks every question he needs to build your timeline. This call typically runs 60 to 90 minutes.",
+          },
+          {
+            n: '03',
+            title: 'Timeline Creation and Vendor Outreach',
+            desc: "John builds a detailed 15-minute interval timeline and contacts every vendor individually to confirm arrival times, access needs, and day-of logistics. If anything's unclear, he sorts it out before the wedding day.",
+          },
+          {
+            n: '04',
+            title: 'Rehearsal Direction',
+            desc: "John runs your ceremony rehearsal (1 hour). Your wedding party knows exactly where to stand, when to walk, and what to do. No chaos on the day.",
+          },
+          {
+            n: '05',
+            title: 'Full Wedding Day Coverage',
+            desc: "John arrives before setup begins and stays through send-off. He manages vendor arrivals, oversees ceremony setup, cues the processional, manages reception transitions, and handles everything that comes up. You don't take a single vendor call.",
+          },
+          {
+            n: '06',
+            title: 'End-of-Night Wrap-Up',
+            desc: "John does a final walkthrough at the end of the night, makes sure all vendors have their payments, and confirms nothing was left behind. You leave. He handles the rest.",
+          },
+        ].map((step) => (
+          <div class="flex gap-6 items-start">
+            <div class="w-12 h-12 rounded-full bg-rose flex-shrink-0 flex items-center justify-center">
+              <span class="font-display text-sm font-bold text-white">{step.n}</span>
+            </div>
+            <div>
+              <h3 class="font-display text-lg font-bold text-charcoal mb-1">{step.title}</h3>
+              <p class="text-sm text-stone-600 font-light leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section bg-white" aria-labelledby="compare-heading">
+    <div class="container">
+      <h2 id="compare-heading" class="section-heading text-center mb-4">
+        Day-of Coordinator vs. Venue Coordinator vs. Full-Service Planner
+      </h2>
+      <p class="text-charcoal-muted text-center mb-10 max-w-2xl mx-auto">These three roles are completely different. Most couples assume their venue coordinator handles everything. They don't.</p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-rose-50">
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40 w-1/4"></th>
+              <th class="text-left p-4 font-display font-semibold text-rose border border-rose-light/40">Day-of Coordinator</th>
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40">Venue Coordinator</th>
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40">Full-Service Planner</th>
+            </tr>
+          </thead>
+          <tbody class="font-body">
+            {comparison.map((row, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-[#FAF1EE]'}>
+                <td class="p-4 border border-rose-light/30 font-semibold text-charcoal">{row.aspect}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-light">{row.dayOf}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-muted">{row.venue}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-muted">{row.fullService}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 bg-[#FAF1EE] rounded-lg p-6">
+        <p class="text-sm text-stone-600 font-light leading-relaxed">
+          <strong class="text-charcoal">The bottom line:</strong> Your venue coordinator manages the room. John manages the day. If you've got outside vendors (photographer, florist, DJ, caterer not from the venue), you need someone whose job is to coordinate all of them. That's day-of coordination.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost section -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="cost-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="cost-heading" class="section-heading text-center mb-4">
+        How Much Does Day-of Coordination Cost in Maryland?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-10">Day-of coordination with John starts at $500. The right package depends on your event length and how many locations are involved.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+        {[
+          { name: 'Ceremony Only', price: '$500', desc: 'Up to 4 hours. Ceremony coordination and rehearsal. Ideal for elopements and micro-weddings.' },
+          { name: 'Ceremony + Reception', price: '$800 to $1,200', desc: 'Up to 8 hours. Full-day coverage from setup through cake cutting and beyond.' },
+          { name: 'Full Day', price: '$1,200 to $1,500', desc: 'Up to 10 hours plus multi-venue logistics. Everything, start to finish.' },
+        ].map((pkg) => (
+          <div class="bg-white border border-rose-light/40 rounded-lg p-6">
+            <h3 class="font-display text-base font-bold text-charcoal mb-1">{pkg.name}</h3>
+            <p class="font-display text-xl font-bold text-rose mb-3">{pkg.price}</p>
+            <p class="text-xs text-charcoal-muted font-body leading-relaxed">{pkg.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/wedding-planning-packages" class="btn-outline">See Full Pricing Breakdown</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white" aria-labelledby="faq-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="faq-heading" class="section-heading text-center mb-10">
+        Day-of Coordination: Common Questions
+      </h2>
+      <div class="space-y-3">
+        {faqs.map((faq, i) => (
+          <details class="bg-[#FAF1EE] border border-rose-light/40 rounded-lg" name="service-faq" open={i === 0}>
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{faq.q}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 font-light leading-relaxed" set:html={faq.a} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal links + CTA -->
+  <section class="section bg-[#FAF1EE]">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="/wedding-planning-packages" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Packages and Pricing</h3>
+          <p class="text-sm text-charcoal-muted font-body">See all day-of coordination tiers and what's included at each price point.</p>
+        </a>
+        <a href="/blog/baltimore-wedding-venues" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Baltimore Wedding Venues</h3>
+          <p class="text-sm text-charcoal-muted font-body">Explore the best Baltimore venues. John knows them all and coordinates with their teams regularly.</p>
+        </a>
+        <a href="/services/full-service-wedding-planning" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Need More Than Day-of?</h3>
+          <p class="text-sm text-charcoal-muted font-body">Full-service planning covers everything from engagement through reception, including all vendor selection.</p>
+        </a>
+      </div>
+
+      <div class="bg-[#C89481] rounded-2xl p-10 md:p-14 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-4">Book John as Your Day-of Coordinator</h2>
+        <p class="text-white/80 font-body mb-8 max-w-xl mx-auto">
+          Free 30-minute consultation. Tell John your date and venue, get a quote, and confirm your booking. Dates fill up, especially May through October.
+        </p>
+        <a href="/contact" class="btn-white text-base px-8 py-4">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</Layout>

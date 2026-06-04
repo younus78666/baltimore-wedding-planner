@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   GOOGLE AI STUDIO DESIGN SYSTEM — Baltimore Wedding Planner
+   Fonts: Outfit (display) + Playfair Display (serif) + Inter (body)
+   Colors: #FAF7F5 bg | #1C1816 ink | #C89481 terracotta | #915B49 dark
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FAF7F5;
+    color: #1C1816;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  a {
+    transition: color 0.2s ease;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+
+  /* ---- BUTTONS ---- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-[#C89481] text-[#1C1816] font-semibold rounded-xl text-sm tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#C89481] focus:ring-offset-2 shadow-sm;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+  .btn-primary:hover {
+    background-color: #915B49;
+    color: white;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-[#C89481] text-[#915B49] font-semibold rounded-xl text-sm tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#C89481] focus:ring-offset-2;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+  .btn-outline:hover {
+    background-color: #C89481;
+    color: #1C1816;
+    border-color: #C89481;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-[#1C1816] font-semibold rounded-xl text-sm tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 shadow-sm;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+  .btn-white:hover {
+    background-color: #faf7f5;
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-[#1C1816] text-white font-semibold rounded-xl text-sm tracking-wide transition-all duration-200;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+  .btn-dark:hover {
+    background-color: #3D3430;
+  }
+
+  /* ---- LAYOUT ---- */
+  .container {
+    @apply max-w-site mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-sm {
+    @apply py-10 md:py-16;
+  }
+
+  /* ---- TYPOGRAPHY ---- */
+  .section-heading {
+    @apply text-3xl md:text-4xl font-semibold leading-tight tracking-tight;
+    font-family: 'Outfit', system-ui, sans-serif;
+    color: #1C1816;
+  }
+
+  .section-sub {
+    @apply text-base md:text-lg leading-relaxed mt-3;
+    color: #6B5D58;
+  }
+
+  /* ---- CARDS ---- */
+  .card {
+    @apply overflow-hidden transition-all duration-200;
+    background-color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(209,196,188,0.6);
+    border-radius: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* ---- BADGES ---- */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  .badge-rose {
+    @apply badge;
+    background-color: #FDF5F1;
+    color: #915B49;
+    border: 1px solid rgba(200,148,129,0.3);
+  }
+
+  .badge-sage {
+    @apply badge;
+    background-color: #f5f5f4;
+    color: #44403c;
+    border: 1px solid rgba(168,162,158,0.4);
+  }
+
+  /* ---- SECTION LABEL PILLS ---- */
+  .section-label {
+    @apply inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest rounded-full px-4 py-1.5;
+    font-family: 'Outfit', system-ui, sans-serif;
+    background-color: #FAF1EE;
+    color: #915B49;
+    border: 1px solid rgba(200,148,129,0.25);
+  }
+
+  /* ---- FAQ ACCORDION ---- */
+  details summary {
+    @apply cursor-pointer;
+    list-style: none;
+  }
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] .faq-icon {
+    @apply rotate-45;
+  }
+}

@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const posts = [
+  {
+    slug: 'how-to-get-married-in-maryland',
+    title: 'How to Get Married in Maryland: Complete 2026 Legal Guide',
+    excerpt: 'No residency requirement, no waiting period. Maryland is one of the most couple-friendly states. Here\'s the exact process, costs, and legal requirements.',
+    category: 'Planning Guides',
+    badgeClass: 'badge-sage',
+    readTime: '9 min read',
+  },
+  {
+    slug: 'average-wedding-cost-maryland',
+    title: 'Average Wedding Cost in Maryland: What Couples Actually Spend in 2026',
+    excerpt: 'Real Maryland wedding cost data from a Baltimore wedding planner who has done 50+ weddings. Venue, catering, photography, and how to stay under $20,000.',
+    category: 'Budget Guides',
+    badgeClass: 'badge-sage',
+    readTime: '10 min read',
+  },
+  {
+    slug: 'affordable-wedding-venues-maryland',
+    title: 'Most Affordable Wedding Venues in Maryland: Complete 2026 Guide',
+    excerpt: 'Budget-friendly Maryland venues with honest pricing, parks, community spaces, small estates, and all-inclusive options under $5,000.',
+    category: 'Venue Guides',
+    badgeClass: 'badge-rose',
+    readTime: '11 min read',
+  },
+  {
+    slug: 'baltimore-wedding-venues',
+    title: 'Best Baltimore Wedding Venues for Every Budget in 2026',
+    excerpt: 'A complete guide to Baltimore\'s top wedding venues, from historic mansions to modern lofts and waterfront spaces. Pricing ranges and capacity details included.',
+    category: 'Venue Guides',
+    badgeClass: 'badge-rose',
+    readTime: '12 min read',
+  },
+  {
+    slug: 'wedding-venues-in-maryland',
+    title: 'Best Wedding Venues in Maryland: Complete 2026 Guide',
+    excerpt: '25+ Maryland wedding venues organized by region: Baltimore, Annapolis, Eastern Shore, DC suburbs, and Western Maryland. Honest pricing and planning tips.',
+    category: 'Venue Guides',
+    badgeClass: 'badge-rose',
+    readTime: '18 min read',
+  },
+  {
+    slug: 'annapolis-wedding-venues',
+    title: 'Best Annapolis Wedding Venues: Waterfront and Historic Options',
+    excerpt: 'Annapolis waterfront venues, historic downtown spaces, and outdoor options for Maryland couples planning a wedding in the state capital.',
+    category: 'Venue Guides',
+    badgeClass: 'badge-rose',
+    readTime: '10 min read',
+  },
+  {
+    slug: 'wedding-planner-cost-baltimore',
+    title: 'How Much Does a Wedding Planner Cost in Baltimore, Maryland?',
+    excerpt: 'Transparent breakdown of wedding planner pricing in Baltimore, from day-of coordination to full-service planning. What to expect at each price point.',
+    category: 'Budget Guides',
+    badgeClass: 'badge-sage',
+    readTime: '8 min read',
+  },
+  {
+    slug: 'how-to-elope-in-maryland',
+    title: 'How to Elope in Maryland: Complete 2026 Guide',
+    excerpt: 'Everything you need to legally elope in Maryland, marriage license requirements, best elopement locations, vendor checklist, and cost breakdown.',
+    category: 'Planning Guides',
+    badgeClass: 'badge-sage',
+    readTime: '11 min read',
+  },
+  {
+    slug: 'wedding-planning-checklist-maryland',
+    title: 'Wedding Planning Checklist: Month-by-Month Timeline for Maryland Couples',
+    excerpt: 'A complete wedding planning checklist built for Maryland couples, what to do 12 months, 6 months, 3 months, and 1 month before your wedding.',
+    category: 'Planning Guides',
+    badgeClass: 'badge-sage',
+    readTime: '14 min read',
+  },
+];
+---
+
+<Layout
+  title="Maryland Wedding Planning Blog | Venue and Cost Guides"
+  description="Free wedding planning guides for Maryland couples. Venue guides, budget tips, elopement planning, and coordination advice from Baltimore wedding planner John."
+  canonical="https://baltimoreweddingplanner.com/blog"
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Blog' }]} />
+  </div>
+
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container text-center max-w-2xl mx-auto">
+      <h1 class="section-heading mb-4">Maryland Wedding Planning Resources</h1>
+      <p class="section-sub">
+        Free guides from John, Baltimore's budget-friendly wedding planner, covering venues, costs, elopements, and everything in between.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="card group hover:shadow-lg transition-all">
+            <div class="h-44 bg-rose-50 relative overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="w-12 h-12 text-rose opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class={post.badgeClass}>{post.category}</span>
+                <span class="text-xs text-charcoal-muted font-body">{post.readTime}</span>
+              </div>
+              <h2 class="font-display text-lg font-bold text-charcoal mb-2 group-hover:text-rose transition-colors leading-snug">{post.title}</h2>
+              <p class="text-sm text-charcoal-muted font-body leading-relaxed mb-4">{post.excerpt}</p>
+              <span class="text-sm font-semibold font-body text-rose inline-flex items-center gap-1.5">
+                Read Guide
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal links to services -->
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <a href="/services/day-of-wedding-coordinator" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group text-center">
+          <h3 class="font-display text-sm font-semibold text-charcoal group-hover:text-rose transition-colors">Day-of Coordination</h3>
+          <p class="text-xs text-charcoal-muted font-body mt-1">From $500</p>
+        </a>
+        <a href="/wedding-planning-packages" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group text-center">
+          <h3 class="font-display text-sm font-semibold text-charcoal group-hover:text-rose transition-colors">All Planning Packages</h3>
+          <p class="text-xs text-charcoal-muted font-body mt-1">From $300</p>
+        </a>
+        <a href="/contact" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group text-center">
+          <h3 class="font-display text-sm font-semibold text-charcoal group-hover:text-rose transition-colors">Book Free Consultation</h3>
+          <p class="text-xs text-charcoal-muted font-body mt-1">No commitment</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

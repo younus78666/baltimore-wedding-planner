@@ -1,0 +1,48 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const siteUrl = 'https://baltimoreweddingplanner.com';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    ...items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: item.label,
+      ...(item.href ? { item: `${siteUrl}${item.href}` } : {}),
+    })),
+  ],
+};
+---
+
+<nav aria-label="Breadcrumb" class="py-4 border-b border-stone-200/60">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <ol class="max-w-site mx-auto px-4 sm:px-6 lg:px-8 flex items-center flex-wrap gap-1.5 text-xs font-body text-stone-400">
+    <li>
+      <a href="/" class="hover:text-[#C89481] transition-colors">Home</a>
+    </li>
+    {items.map((item, i) => (
+      <>
+        <li aria-hidden="true" class="text-stone-300 select-none">/</li>
+        <li>
+          {item.href && i < items.length - 1 ? (
+            <a href={item.href} class="hover:text-[#C89481] transition-colors">{item.label}</a>
+          ) : (
+            <span class="text-stone-700 font-medium" aria-current="page">{item.label}</span>
+          )}
+        </li>
+      </>
+    ))}
+  </ol>
+</nav>

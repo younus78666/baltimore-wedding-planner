@@ -1,0 +1,293 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://baltimoreweddingplanner.com/services/full-service-wedding-planning#service',
+  name: 'Full-Service Wedding Planning',
+  description: 'Complete wedding planning in Baltimore and Maryland from engagement through reception. John handles vendors, budget, timeline, and the wedding day for couples with budgets under $20,000.',
+  provider: { '@type': 'LocalBusiness', '@id': 'https://baltimoreweddingplanner.com/#business' },
+  areaServed: { '@type': 'State', name: 'Maryland' },
+  offers: { '@type': 'Offer', priceCurrency: 'USD', priceRange: '$1500 - $2800', availability: 'https://schema.org/InStock' },
+  serviceType: 'Full-Service Wedding Planning',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does full-service wedding planning include?',
+      acceptedAnswer: { '@type': 'Answer', text: "Full-service wedding planning includes unlimited planning consultations, full budget creation and management, vendor sourcing and negotiation, contract review, venue search assistance, timeline creation, ceremony rehearsal direction, and complete wedding day coordination from setup through send-off." },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does full-service wedding planning cost in Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "Full-service wedding planning with John costs $1,500 to $2,800 for Maryland weddings with budgets under $20,000. The fee typically pays for itself through vendor discounts and avoided planning mistakes." },
+    },
+    {
+      '@type': 'Question',
+      name: 'How far in advance should I hire a full-service wedding planner?',
+      acceptedAnswer: { '@type': 'Answer', text: "For full-service planning, hire your planner as soon as possible after getting engaged. 12 to 18 months before the wedding is ideal. The earlier you start, the more venue options you'll have and the better vendor availability you'll get, especially for peak season Maryland dates." },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between full-service planning and day-of coordination?',
+      acceptedAnswer: { '@type': 'Answer', text: "Full-service planning covers everything from the engagement through the wedding day: vendor selection, contract review, budget management, and day-of coordination. Day-of coordination begins 2 to 3 weeks before the wedding and manages only the wedding day itself, with vendors you've already booked." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can a full-service planner help with a wedding budget under $15,000?',
+      acceptedAnswer: { '@type': 'Answer', text: "Yes. John specializes in Maryland weddings with budgets under $20,000. He knows which vendors deliver quality at accessible price points, how to negotiate contracts, and which tradeoffs save money without affecting the experience." },
+    },
+  ],
+};
+
+const included = [
+  "Unlimited planning consultations (in-person, phone, or video)",
+  "Full wedding budget creation and monthly tracking",
+  "Vendor sourcing, vetting, and negotiation across all categories",
+  "Contract review for every vendor before you sign",
+  "Venue search, tours, and booking assistance",
+  "Detailed 15-minute interval timeline creation",
+  "Ceremony rehearsal direction (1 hour)",
+  "Full wedding day coordination from setup through send-off",
+  "Guest list and RSVP management support",
+  "Design direction and decor coordination",
+  "Emergency kit and contingency planning",
+  "Post-wedding vendor follow-up and gratuity coordination",
+];
+
+const timeline = [
+  { phase: '12 to 18 months out', tasks: ["Venue search and booking", "Photographer and videographer contracts", "Catering selection", "Initial guest list and budget creation"] },
+  { phase: '9 to 12 months out', tasks: ["DJ or band booking", "Florist sourcing and consultation", "Engagement shoot coordination", "Dress shopping guidance"] },
+  { phase: '6 to 9 months out', tasks: ["Officiant booking", "Transportation coordination", "Hotel block arrangement for guests", "Design and decor direction"] },
+  { phase: '3 to 6 months out', tasks: ["Invitation design and mailing", "Menu finalization with caterer", "Hair and makeup booking", "Rehearsal dinner coordination"] },
+  { phase: '1 to 3 months out', tasks: ["Final vendor confirmations", "Detailed timeline creation", "Seating chart assistance", "Marriage license guidance"] },
+  { phase: 'The wedding week', tasks: ["Ceremony rehearsal direction", "Final vendor walk-throughs", "Day-of timeline distribution", "Full wedding day management"] },
+];
+---
+
+<Layout
+  title="Full-Service Wedding Planner in Baltimore and Maryland"
+  description="John manages every detail of your Maryland wedding from engagement through reception. Full-service planning for budgets under $20,000. Free consultation."
+  canonical="https://baltimoreweddingplanner.com/services/full-service-wedding-planning"
+  schema={[schema, faqSchema]}
+>
+  <div class="container">
+    <Breadcrumbs items={[
+      { label: 'Services', href: '/services/full-service-wedding-planning' },
+      { label: 'Full-Service Planning' },
+    ]} />
+  </div>
+
+  <!-- Hero -->
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container max-w-3xl">
+      <span class="section-label mb-5 block w-fit">End-to-End Planning</span>
+      <h1 class="font-display text-4xl md:text-5xl font-medium text-stone-900 mb-5 leading-[1.15] tracking-tight">
+        Full-Service Wedding Planner in Baltimore, Maryland
+      </h1>
+      <p class="text-stone-600 font-light text-lg sm:text-xl leading-relaxed mb-4">
+        From the week you get engaged to the moment you leave your reception, John handles every decision, every vendor, and every detail.
+      </p>
+      <p class="text-stone-600 font-light text-base sm:text-lg leading-relaxed mb-8">
+        Full-service planning isn't just about having someone to call with questions. It's about having a professional manage your entire wedding from start to finish, so you don't spend your engagement as a part-time event coordinator.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/contact" class="btn-primary text-base px-8 py-4">Book a Free Consultation</a>
+        <a href="/wedding-planning-packages" class="btn-outline text-base px-8 py-4">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it covers -->
+  <section class="section bg-white" aria-labelledby="what-heading">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2 id="what-heading" class="section-heading mb-5">
+            What Does Full-Service Wedding Planning Include?
+          </h2>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            Full-service planning means John is involved in every aspect of your wedding from the first venue search to the final vendor payment at the end of your reception. He's not just available to answer questions. He's actively managing your wedding as a project from day one.
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            For Maryland couples with budgets under $20,000, John knows exactly which vendors deliver real quality at accessible prices. He's built vendor relationships across Baltimore, Annapolis, and the Eastern Shore over 50+ weddings, and those relationships translate into pricing and service that couples can't access on their own.
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-8">
+            The planning timeline typically runs 12 to 18 months. You'll meet regularly, every major decision gets John's input before it's finalized, and every vendor contract gets reviewed before you sign it.
+          </p>
+          <a href="/contact" class="btn-primary">Start with a Free Consultation</a>
+        </div>
+
+        <div class="bg-[#FAF1EE] rounded-lg p-8">
+          <h3 class="font-display text-xl font-bold text-charcoal mb-6">Everything Included</h3>
+          <ul class="space-y-3" role="list">
+            {included.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-rose flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-sm font-body text-charcoal-light">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planning timeline -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="timeline-heading">
+    <div class="container max-w-4xl">
+      <h2 id="timeline-heading" class="section-heading text-center mb-4">
+        How Does Full-Service Wedding Planning Work, Month by Month?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">
+        Here's what full-service planning looks like across a 12 to 18 month timeline for a Maryland wedding.
+      </p>
+      <div class="space-y-5">
+        {timeline.map((phase) => (
+          <div class="bg-white rounded-lg p-6 flex flex-col sm:flex-row gap-4">
+            <div class="sm:w-48 flex-shrink-0">
+              <span class="font-display text-sm font-bold text-rose">{phase.phase}</span>
+            </div>
+            <ul class="space-y-1.5 flex-1">
+              {phase.tasks.map((task) => (
+                <li class="flex items-center gap-2 text-sm text-charcoal-muted font-body">
+                  <span class="w-1.5 h-1.5 rounded-full bg-rose flex-shrink-0" />
+                  {task}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for + comparison -->
+  <section class="section bg-white" aria-labelledby="who-heading">
+    <div class="container">
+      <h2 id="who-heading" class="section-heading text-center mb-4">
+        Who Is Full-Service Planning Right For?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">
+        Full-service planning isn't the right fit for every couple. Here's an honest breakdown of who benefits most and how it compares to other service levels.
+      </p>
+
+      <div class="overflow-x-auto mb-10">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-rose-50">
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40 w-1/4"></th>
+              <th class="text-left p-4 font-display font-semibold text-rose border border-rose-light/40">Full-Service</th>
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40">Partial Planning</th>
+              <th class="text-left p-4 font-display font-semibold text-charcoal border border-rose-light/40">Day-of Coordination</th>
+            </tr>
+          </thead>
+          <tbody class="font-body">
+            {[
+              { aspect: 'When it starts', full: 'At engagement (12-18 months out)', partial: 'Mid-planning (4-8 months out)', day: '2-3 weeks before the wedding' },
+              { aspect: 'Vendor selection', full: "John sources and books all vendors", partial: 'Help with specific vendor categories', day: "You've booked all your own vendors" },
+              { aspect: 'Budget management', full: 'Full budget creation and tracking', partial: 'Input on specific areas', day: 'Not included' },
+              { aspect: 'Contract review', full: 'Every contract before you sign', partial: 'Contracts in scope categories', day: 'Not included' },
+              { aspect: 'Day-of coverage', full: 'Included (10 hours)', partial: 'Included', day: 'This IS the service (10 hours)' },
+              { aspect: 'Maryland cost', full: '$1,500 to $2,800', partial: '$800 to $1,800', day: '$500 to $1,500' },
+              { aspect: "Best for", full: 'Couples who want everything handled', partial: 'Couples who need targeted help', day: 'Couples who planned it themselves' },
+            ].map((row, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-[#FAF1EE]'}>
+                <td class="p-4 border border-rose-light/30 font-semibold text-charcoal">{row.aspect}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-light">{row.full}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-muted">{row.partial}</td>
+                <td class="p-4 border border-rose-light/30 text-charcoal-muted">{row.day}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-[#FAF1EE] rounded-lg p-6 max-w-3xl mx-auto">
+        <p class="font-display text-base font-semibold text-charcoal mb-2">Is full-service planning worth the cost?</p>
+        <p class="text-sm text-stone-600 font-light leading-relaxed">For most couples, yes. John's vendor relationships translate into 10 to 20% discounts that often exceed his fee. On a $18,000 Maryland wedding, a 12% average discount across the three biggest vendors saves $1,800 to $2,200. That's more than the cost of partial planning, and close to the cost of full-service. Beyond savings, full-service planning prevents costly mistakes before they happen, not after they've been signed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="faq-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="faq-heading" class="section-heading text-center mb-10">
+        Full-Service Planning: Common Questions
+      </h2>
+      <div class="space-y-3">
+        {[
+          {
+            q: 'What does full-service wedding planning include?',
+            a: "Everything from the venue search to the final vendor payment at your reception. John handles budget creation, vendor sourcing and negotiation, contract review, timeline creation, rehearsal direction, and complete wedding day management. You'll have unlimited consultations throughout the process and he'll be reachable for questions whenever they come up.",
+          },
+          {
+            q: 'How much does full-service planning cost in Maryland?',
+            a: "John's full-service planning runs $1,500 to $2,800 for Maryland weddings with budgets under $20,000. The fee typically pays for itself through vendor discounts, which often run 10 to 20% across catering, photography, and florals for clients who work with a planner. <a href='/wedding-planning-packages' class='text-rose hover:underline'>See full pricing breakdown</a>.",
+          },
+          {
+            q: 'How far in advance should I hire a full-service planner?',
+            a: "As early as possible after getting engaged. 12 to 18 months before the wedding is ideal for full-service planning. The earlier you start, the more venue options you'll have and the better vendor availability, especially for peak season Maryland dates in May through October. That said, John has taken on full-service clients as close as 6 months out.",
+          },
+          {
+            q: "What's the difference between full-service and day-of coordination?",
+            a: "Full-service planning covers the entire engagement-to-reception arc: vendor selection, contract review, budget management, design direction, and wedding day coordination. Day-of coordination begins 2 to 3 weeks before the wedding and manages only the day itself, with vendors you've already booked on your own. They're genuinely different services for different situations. <a href='/services/day-of-wedding-coordinator' class='text-rose hover:underline'>Learn about day-of coordination</a>.",
+          },
+          {
+            q: 'Can full-service planning work for a wedding budget under $15,000?',
+            a: "Absolutely. John specializes in Maryland weddings with budgets under $20,000. He knows which vendors deliver real quality at accessible price points and how to build a $12,000 to $15,000 wedding that doesn't look or feel like a compromise. The vendor relationships and negotiating experience are especially valuable at lower budget levels where every dollar matters more.",
+          },
+        ].map((faq, i) => (
+          <details class="bg-white border border-rose-light/40 rounded-lg" name="faq-full" open={i === 0}>
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{faq.q}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 font-light leading-relaxed" set:html={faq.a} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal links + CTA -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="/services/day-of-wedding-coordinator" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Just Need Day-of Help?</h3>
+          <p class="text-sm text-charcoal-muted font-body">Day-of coordination manages your wedding day without months of prior involvement. Starts at $500.</p>
+        </a>
+        <a href="/wedding-planning-packages" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Compare All Packages</h3>
+          <p class="text-sm text-charcoal-muted font-body">See full-service, partial, day-of, and elopement pricing side by side for Maryland weddings.</p>
+        </a>
+        <a href="/blog/baltimore-wedding-venues" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Baltimore Venue Guide</h3>
+          <p class="text-sm text-charcoal-muted font-body">John knows these venues firsthand. Real pricing, honest reviews, and capacity details.</p>
+        </a>
+      </div>
+
+      <div class="bg-[#C89481] rounded-2xl p-10 md:p-14 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-4">Ready to Plan Your Maryland Wedding?</h2>
+        <p class="text-white/80 font-body mb-8 max-w-xl mx-auto">
+          Book a free 30-minute consultation. John will review your vision, timeline, and budget, and tell you honestly whether full-service planning is the right fit.
+        </p>
+        <a href="/contact" class="btn-white text-base px-8 py-4">Book My Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</Layout>

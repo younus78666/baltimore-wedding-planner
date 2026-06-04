@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const faqs = [
+  {
+    category: 'Pricing & Packages',
+    items: [
+      {
+        q: 'How much does a wedding planner cost in Baltimore, Maryland?',
+        a: 'John\'s packages start at $300 for elopement coordination and go up to $2,800 for full-service planning. All packages are designed for Maryland couples with wedding budgets under $20,000. <a href="/wedding-planning-packages" class="text-rose hover:underline">See full pricing breakdown</a>.',
+      },
+      {
+        q: 'Do you charge a deposit?',
+        a: 'Yes. A 25% non-refundable deposit is required to hold your wedding date. The remaining balance is due 30 days before your wedding. If you need a payment plan for the full-service package, John can discuss that during the consultation.',
+      },
+      {
+        q: 'What payment methods do you accept?',
+        a: 'John accepts credit cards, bank transfer, and Venmo. If you\'re paying for a full-service package and need to split payments, he\'s happy to discuss a payment plan during the consultation.',
+      },
+    ],
+  },
+  {
+    category: 'Services',
+    items: [
+      {
+        q: 'What is the difference between a wedding planner and a wedding coordinator?',
+        a: 'A wedding planner is involved throughout the entire planning process: vendor selection, budget management, and logistics. A coordinator (often called a day-of coordinator) manages only the wedding day itself. John offers both, and he\'ll help you figure out which one fits your situation.',
+      },
+      {
+        q: 'Do you work with a specific style of wedding?',
+        a: 'No. John has planned weddings ranging from courthouse ceremonies to 150-person ballroom receptions. He works with what matters to the couple, not his own aesthetic preferences. If you\'re not sure what style you want yet, that\'s fine too : that conversation happens in the consultation.',
+      },
+      {
+        q: 'Do you plan destination weddings outside Maryland?',
+        a: 'John specializes in Maryland weddings. For events more than 60 miles outside Baltimore, a travel fee applies. He\'ll confirm the amount during the free consultation so you\'re not surprised by it later.',
+      },
+      {
+        q: 'Can you help with venue selection?',
+        a: 'Yes. Venue selection is included in full-service and partial planning packages. John has relationships with venues across Baltimore, Annapolis, the Eastern Shore, and Western Maryland, and he\'ll tell you honestly which ones fit your budget and guest count. <a href="/blog/baltimore-wedding-venues" class="text-rose hover:underline">Browse the Baltimore venue guide</a>.',
+      },
+    ],
+  },
+  {
+    category: 'Process & Timeline',
+    items: [
+      {
+        q: 'How far in advance should I book a wedding planner?',
+        a: 'For full-service planning, 12 to 18 months in advance is ideal. For day-of coordination, 3 to 4 months minimum. Peak season Maryland dates (May through October) fill quickly, especially Saturdays. If you\'re less than 6 months out, reach out and John can tell you what\'s still realistic.',
+      },
+      {
+        q: 'What happens in the free consultation?',
+        a: 'The 30-minute call covers your vision, guest count, budget, and wedding date. John will recommend the right package and answer your questions honestly. There\'s no obligation and no sales pressure.',
+      },
+      {
+        q: 'How do you communicate during the planning process?',
+        a: 'Email is the primary communication channel, and phone calls are scheduled for important decisions. John responds to all messages within 24 hours on business days. You won\'t be left waiting on an answer when a decision is time-sensitive.',
+      },
+    ],
+  },
+  {
+    category: 'Maryland-Specific',
+    items: [
+      {
+        q: 'What areas of Maryland do you serve?',
+        a: 'John serves all of Maryland: Baltimore, Annapolis, Columbia, Towson, Frederick, Rockville, Silver Spring, the Eastern Shore, and Western Maryland. Travel fees apply beyond 60 miles from Baltimore, and he\'ll confirm any fees upfront during the consultation.',
+      },
+      {
+        q: 'Do you know vendors in Annapolis and the Eastern Shore?',
+        a: 'Yes. John\'s built vendor relationships across Maryland, including Annapolis waterfront venues, Eastern Shore caterers, and photographers who specialize in outdoor Maryland settings. He\'s coordinated events at venues throughout the state and knows which vendors are worth the cost.',
+      },
+      {
+        q: 'Can you help us elope in Maryland?',
+        a: 'Yes. Elopements and micro-weddings (under 30 guests) are a specialty. John handles location permits, officiant coordination, and all vendor logistics. He\'s done dozens of them across Baltimore, Annapolis, and the Eastern Shore. <a href="/services/elopement-planner-maryland" class="text-rose hover:underline">See elopement packages</a>.',
+      },
+    ],
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.flatMap((cat) =>
+    cat.items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a.replace(/<[^>]*>/g, '') },
+    }))
+  ),
+};
+---
+
+<Layout
+  title="Maryland Wedding Planner FAQ: Costs, Services, Process"
+  description="Common questions about wedding planning costs, services, and process in Baltimore and Maryland. Pricing, packages, and Maryland-specific answers from John."
+  canonical="https://baltimoreweddingplanner.com/faq"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'FAQ' }]} />
+  </div>
+
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container text-center max-w-2xl mx-auto">
+      <h1 class="section-heading mb-4">Wedding Planner FAQ</h1>
+      <p class="section-sub">Common questions about wedding planning costs, services, and process in Baltimore and Maryland.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container max-w-3xl mx-auto">
+      <div class="space-y-12">
+        {faqs.map((cat) => (
+          <div>
+            <h2 class="font-display text-xl font-bold text-charcoal mb-5 pb-3 border-b border-rose-light/40">{cat.category}</h2>
+            <div class="space-y-3">
+              {cat.items.map((item) => (
+                <details class="bg-[#FAF1EE] border border-rose-light/40 rounded-lg" name={`faq-${cat.category}`}>
+                  <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+                    <h3 class="font-display text-base font-semibold text-charcoal text-left">{item.q}</h3>
+                    <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                  </summary>
+                  <div class="px-5 pb-5">
+                    <p class="text-sm text-stone-600 font-light leading-relaxed" set:html={item.a} />
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-14 bg-rose rounded-lg p-10 text-center">
+        <h2 class="font-display text-2xl font-bold text-white mb-3">Still Have Questions?</h2>
+        <p class="text-white/80 font-body mb-6">Book a free 30-minute consultation and ask John directly.</p>
+        <a href="/contact" class="btn-white">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</Layout>

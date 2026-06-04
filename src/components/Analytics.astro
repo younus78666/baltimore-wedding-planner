@@ -1,0 +1,244 @@
+---
+// Analytics Component — Baltimore Wedding Planner
+// GA4 + Consent Mode v2 + Microsoft Clarity + Conversion Events
+//
+// TODO: Replace these placeholders before launch:
+//   GA4_MEASUREMENT_ID: G-XXXXXXXXXX  → Get from analytics.google.com
+//   CLARITY_PROJECT_ID: XXXXXXXXXX    → Get from clarity.microsoft.com
+//
+// CookieConsent.astro handles the consent banner and fires:
+//   gtag('consent', 'update', { analytics_storage: 'granted' | 'denied' })
+// This component sets the default denied state before that fires.
+
+const GA4_ID = 'G-XXXXXXXXXX'; // TODO: Replace with real GA4 Measurement ID
+const CLARITY_ID = 'XXXXXXXXXX'; // TODO: Replace with real Clarity Project ID
+---
+
+<!-- ============================================================
+     STEP 1: Consent Mode v2 Default (MUST be before gtag.js load)
+     Sets all consent signals to denied until user accepts.
+     ============================================================ -->
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+
+  // Default: deny all until user accepts (Consent Mode v2)
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
+</script>
+
+<!-- ============================================================
+     STEP 2: Load GA4 (gtag.js)
+     Loads asynchronously — won't block page render.
+     ============================================================ -->
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+<script is:inline define:vars={{ GA4_ID }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  // GA4 Configuration
+  gtag('config', GA4_ID, {
+    // Disable page_view auto-fire (we'll fire it manually after consent check)
+    send_page_view: true,
+    // Anonymize IP for privacy
+    anonymize_ip: true,
+    // Cookie flags for security
+    cookie_flags: 'SameSite=None;Secure',
+    // Custom dimensions
+    custom_map: {
+      dimension1: 'page_type',
+      dimension2: 'wedding_service',
+    }
+  });
+</script>
+
+<!-- ============================================================
+     STEP 3: Microsoft Clarity
+     Only loads if analytics consent is granted.
+     The CookieConsent.astro fires gtag consent update — we
+     listen for that and conditionally load Clarity.
+     ============================================================ -->
+<script is:inline define:vars={{ CLARITY_ID }}>
+  // Load Clarity only after consent is accepted
+  function loadClarity(projectId) {
+    if (typeof clarity !== 'undefined') return; // Already loaded
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", projectId);
+  }
+
+  // Check if consent already given (returning visitor)
+  try {
+    var savedConsent = localStorage.getItem('bwp_consent');
+    if (savedConsent === 'accepted') {
+      loadClarity(CLARITY_ID);
+    }
+  } catch(e) {}
+
+  // Listen for consent updates from CookieConsent.astro
+  window.addEventListener('bwp_consent_granted', function() {
+    loadClarity(CLARITY_ID);
+  });
+</script>
+
+<!-- ============================================================
+     STEP 4: Conversion Event Tracking
+     Tracks all key user actions for lead generation.
+     ============================================================ -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Phone clicks ---
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'phone_click', {
+            event_category: 'contact',
+            event_label: el.getAttribute('href'),
+            value: 1
+          });
+        }
+      });
+    });
+
+    // --- Email clicks ---
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'email_click', {
+            event_category: 'contact',
+            event_label: el.getAttribute('href'),
+            value: 1
+          });
+        }
+      });
+    });
+
+    // --- Calendly consultation booking clicks ---
+    document.querySelectorAll('a[href*="calendly.com"]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'consultation_booked', {
+            event_category: 'lead',
+            event_label: 'calendly_click',
+            value: 5
+          });
+          // Also fire generate_lead for conversion tracking
+          gtag('event', 'generate_lead', {
+            event_category: 'lead',
+            source: 'calendly',
+            value: 5
+          });
+        }
+      });
+    });
+
+    // --- Primary CTA button clicks ---
+    document.querySelectorAll('.btn-primary').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof gtag === 'function') {
+          var label = el.textContent.trim().substring(0, 50);
+          var href = el.getAttribute('href') || '';
+          gtag('event', 'cta_click', {
+            event_category: 'engagement',
+            event_label: label,
+            link_url: href,
+            value: 1
+          });
+        }
+      });
+    });
+
+    // --- Contact form submission (Netlify form) ---
+    var contactForm = document.querySelector('form[name="consultation-request"]');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function() {
+        if (typeof gtag === 'function') {
+          // Get the service selected
+          var serviceEl = document.getElementById('service');
+          var service = serviceEl ? serviceEl.value : 'unknown';
+          var budgetEl = document.getElementById('budget');
+          var budget = budgetEl ? budgetEl.value : 'unknown';
+
+          gtag('event', 'generate_lead', {
+            event_category: 'lead',
+            source: 'contact_form',
+            service_interest: service,
+            budget_range: budget,
+            value: 10
+          });
+
+          gtag('event', 'form_submit', {
+            event_category: 'contact',
+            form_name: 'consultation_request',
+            service_interest: service,
+            value: 10
+          });
+        }
+      });
+    }
+
+    // --- Scroll depth tracking ---
+    var scrollDepthFired = { 50: false, 90: false };
+    window.addEventListener('scroll', function() {
+      var scrollPercent = Math.round(
+        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+      );
+      if (scrollPercent >= 50 && !scrollDepthFired[50]) {
+        scrollDepthFired[50] = true;
+        if (typeof gtag === 'function') {
+          gtag('event', 'scroll_depth', {
+            event_category: 'engagement',
+            depth: 50,
+            page_path: window.location.pathname
+          });
+        }
+      }
+      if (scrollPercent >= 90 && !scrollDepthFired[90]) {
+        scrollDepthFired[90] = true;
+        if (typeof gtag === 'function') {
+          gtag('event', 'scroll_depth', {
+            event_category: 'engagement',
+            depth: 90,
+            page_path: window.location.pathname
+          });
+        }
+      }
+    }, { passive: true });
+
+    // --- Outbound link tracking ---
+    document.querySelectorAll('a[href^="http"]').forEach(function(el) {
+      var href = el.getAttribute('href') || '';
+      if (!href.includes('baltimoreweddingplanner.com')) {
+        el.addEventListener('click', function() {
+          if (typeof gtag === 'function') {
+            gtag('event', 'outbound_click', {
+              event_category: 'external',
+              link_url: href,
+              link_domain: new URL(href).hostname
+            });
+          }
+        });
+      }
+    });
+
+  }); // end DOMContentLoaded
+
+  // --- Dispatch custom event when consent is granted (for Clarity) ---
+  // This bridges CookieConsent.astro's localStorage change to a DOM event
+  var originalSetItem = localStorage.setItem.bind(localStorage);
+  localStorage.setItem = function(key, value) {
+    originalSetItem(key, value);
+    if (key === 'bwp_consent' && value === 'accepted') {
+      window.dispatchEvent(new CustomEvent('bwp_consent_granted'));
+    }
+  };
+</script>

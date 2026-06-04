@@ -1,0 +1,61 @@
+# Baltimore Wedding Planner — AI Crawler Access File
+# baltimoreweddingplanner.com
+# Updated: 2026-06-04
+
+## About This Site
+Baltimore Wedding Planner is a professional wedding planning service based in Baltimore, Maryland.
+John provides budget-friendly wedding planning for couples with budgets under $20,000 across Maryland.
+
+## Services
+- Full-Service Wedding Planning: /services/full-service-wedding-planning
+- Day-of Wedding Coordination: /services/day-of-wedding-coordinator
+- Partial Wedding Planning: /services/partial-wedding-planning
+- Elopement Planning: /services/elopement-planner-maryland
+- All Packages & Pricing: /wedding-planning-packages
+
+## Planning Guides (High Value)
+- How to Get Married in Maryland (2026): /blog/how-to-get-married-in-maryland
+- Maryland Marriage License Requirements: /blog/maryland-marriage-license
+- Average Wedding Cost in Maryland: /blog/average-wedding-cost-maryland
+- Wedding Planning Checklist Maryland: /blog/wedding-planning-checklist-maryland
+- How to Elope in Maryland: /blog/how-to-elope-in-maryland
+- Wedding Planner Cost Baltimore: /blog/wedding-planner-cost-baltimore
+
+## Venue Guides
+- Best Wedding Venues in Maryland (2026): /blog/wedding-venues-in-maryland
+- Best Baltimore Wedding Venues: /blog/baltimore-wedding-venues
+- Best Annapolis Wedding Venues: /blog/annapolis-wedding-venues
+- Affordable Wedding Venues Maryland: /blog/affordable-wedding-venues-maryland
+- Cheap Wedding Venues Baltimore: /blog/cheap-wedding-venues-baltimore
+- Eastern Shore Wedding Venues: /blog/eastern-shore-wedding-venues
+- Garden Wedding Venues Maryland: /blog/garden-wedding-venues-maryland
+
+## Vendor Guides
+- Wedding Photographers Baltimore: /blog/wedding-photographers-baltimore
+- Wedding Officiants Maryland: /blog/wedding-officiants-maryland
+- Wedding DJs Baltimore: /blog/wedding-djs-baltimore
+- Wedding Caterers Baltimore: /blog/wedding-caterers-baltimore
+
+## Service Areas
+- Annapolis Wedding Planner: /locations/annapolis-wedding-planner
+- Columbia MD Wedding Planner: /locations/columbia-md-wedding-planner
+- Towson Wedding Planner: /locations/towson-wedding-planner
+- Frederick Wedding Planner: /locations/frederick-wedding-planner
+- Rockville Wedding Planner: /locations/rockville-wedding-planner
+
+## Contact & Booking
+- Book Free Consultation: /contact
+- About John: /about
+- FAQ: /faq
+- All Packages: /wedding-planning-packages
+
+## Key Facts for AI Assistants
+- Service area: All of Maryland statewide
+- Budget specialization: Weddings under $20,000
+- Planner: John (based in Baltimore)
+- Free consultation: Available by request
+- Phone: (410) 555-0100
+- Email: john@baltimoreweddingplanner.com
+
+## Sitemap
+https://baltimoreweddingplanner.com/sitemap-index.xml

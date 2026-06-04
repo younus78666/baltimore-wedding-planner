@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': 'https://baltimoreweddingplanner.com/about#john',
+    name: 'John',
+    jobTitle: 'Wedding Planner',
+    worksFor: { '@type': 'LocalBusiness', '@id': 'https://baltimoreweddingplanner.com/#business' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Baltimore', addressRegion: 'MD', addressCountry: 'US' },
+    description: 'Baltimore-based wedding planner specializing in Maryland weddings under $20,000. Over 50 weddings planned across Baltimore, Annapolis, the Eastern Shore, and Western Maryland.',
+    url: 'https://baltimoreweddingplanner.com/about',
+    knowsAbout: ['Wedding Planning', 'Wedding Coordination', 'Elopement Planning', 'Maryland Wedding Vendors', 'Wedding Budget Management'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How many weddings has John planned in Maryland?',
+        acceptedAnswer: { '@type': 'Answer', text: 'John has planned over 50 weddings across Maryland, including elopements, micro-weddings, and full-scale receptions. He has coordinated events across Baltimore City, Annapolis, the Eastern Shore, Frederick County, and Montgomery County.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does John only work with budget weddings?',
+        acceptedAnswer: { '@type': 'Answer', text: "John specializes in Maryland weddings with total budgets under $20,000. This is a deliberate focus, not a limitation. He's built vendor relationships specifically for this market and knows which vendors consistently deliver quality at accessible prices." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does John work with same-sex couples?',
+        acceptedAnswer: { '@type': 'Answer', text: "Yes. John works with all couples regardless of gender identity or sexual orientation. Maryland is one of the most LGBTQ-friendly states for marriage, and John has planned weddings for same-sex couples across Baltimore, Annapolis, and the Eastern Shore." },
+      },
+    ],
+  },
+];
+
+const stats = [
+  { number: '50+', label: 'Maryland weddings planned' },
+  { number: 'All MD', label: 'Statewide service area' },
+  { number: '$20K', label: 'Maximum budget specialty' },
+  { number: '$0', label: 'Consultation fee' },
+];
+
+const values = [
+  {
+    title: 'Budget Honesty',
+    desc: "John doesn't recommend vendors or decisions that stretch your budget without a clear reason. Every dollar gets justified before it's committed. If something isn't worth the cost at your budget level, he'll tell you.",
+  },
+  {
+    title: 'Maryland Expertise',
+    desc: "50+ Maryland weddings means John knows the specific quirks of venues across Baltimore, Annapolis, the Eastern Shore, and Western Maryland. He knows which venue coordinators are reliable, which caterers work well at lower price points, and which vendors consistently deliver.",
+  },
+  {
+    title: 'Stress Reduction',
+    desc: "The whole reason couples hire a planner is to stop managing a second job during their engagement. John takes the logistics off your plate so you can actually enjoy being engaged, and actually be present on your wedding day.",
+  },
+];
+---
+
+<Layout
+  title="Meet John: Baltimore's Budget-Friendly Wedding Planner"
+  description="John is a Baltimore-based wedding planner specializing in Maryland weddings under $20,000. Real vendor relationships, genuine negotiation, and 50+ weddings."
+  canonical="https://baltimoreweddingplanner.com/about"
+  schema={schema}
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'About John' }]} />
+  </div>
+
+  <!-- Hero -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Photo placeholder -->
+        <div class="relative h-[500px] rounded-lg overflow-hidden bg-rose-light/30 order-last lg:order-first">
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-rose">
+            <svg class="w-20 h-20 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <p class="text-sm opacity-30 font-body mt-3">John's headshot - replace with real photo</p>
+          </div>
+        </div>
+
+        <!-- Copy -->
+        <div>
+          <span class="section-label mb-5 block w-fit">Your Baltimore Wedding Planner</span>
+          <h1 id="about-heading" class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-6 leading-tight">
+            Meet John, Maryland's Budget Wedding Planner
+          </h1>
+          <p class="text-charcoal-muted text-lg leading-relaxed mb-4">
+            John has planned over 50 weddings across Maryland, from intimate Annapolis waterfront elopements to 150-person Baltimore receptions, all on budgets that couples felt good about afterward.
+          </p>
+          <p class="text-charcoal-muted text-base leading-relaxed mb-4">
+            His approach is direct: figure out what matters most to each couple, build a plan that prioritizes those things, and negotiate hard on everything else. The result is a wedding that feels personal and looks expensive without the debt that follows.
+          </p>
+          <p class="text-charcoal-muted text-base leading-relaxed mb-8">
+            Based in Baltimore, John's built vendor relationships across the entire state over years of working Maryland weddings. Photographers, caterers, florists, DJs, and venues that consistently deliver quality at prices that fit a real budget.
+          </p>
+          <a href="/contact" class="btn-primary">Book a Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="bg-white border-y border-rose-light/30">
+    <div class="container py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-rose-light/30 text-center">
+        {stats.map((s) => (
+          <div class="px-6 py-3">
+            <p class="font-display text-3xl font-bold text-charcoal">{s.number}</p>
+            <p class="text-sm text-charcoal-muted font-body mt-1">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why budget specialty -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="why-heading">
+    <div class="container max-w-4xl">
+      <h2 id="why-heading" class="section-heading mb-5">
+        Why Does John Specialize in Budget-Friendly Maryland Weddings?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            Most wedding planners in Maryland focus on the luxury market. That makes sense for them financially. It also means budget-conscious couples are underserved. They're either planning everything themselves and spending the engagement stressed, or they're skipping the planner entirely and hitting expensive mistakes they could've avoided.
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            John decided early on that he'd rather be genuinely good at planning Maryland weddings for couples spending $8,000 to $20,000 than mediocre at planning $60,000 weddings. That focus means he's built relationships with vendors who work well at this price point, he knows which budget decisions make a real difference and which ones don't, and he can negotiate in ways that couples can't do on their own.
+          </p>
+          <p class="text-charcoal-muted leading-relaxed">
+            It's not a compromise. It's a deliberate choice. Budget weddings, done well, are real weddings. They just require different expertise than luxury events, and John's built that expertise over 50+ weddings at this price point.
+          </p>
+        </div>
+        <div class="space-y-5">
+          {[
+            { label: 'Vendor network built for this market', detail: "John's vendor relationships are specifically with photographers, caterers, and florists who deliver quality at mid-range prices. He's not recommending vendors who primarily serve luxury couples." },
+            { label: 'Negotiation that actually works', detail: "Planners who send vendors repeat business get preferred pricing. That discount typically exceeds the cost of hiring the planner in the first place." },
+            { label: 'Decisions that match your priorities', detail: "Not every $500 upgrade is worth it. And some $200 decisions make a major difference. John knows which is which because he's done it 50+ times at this budget level." },
+          ].map((item) => (
+            <div class="flex gap-4 items-start">
+              <div class="w-5 h-5 rounded-full bg-rose flex-shrink-0 mt-0.5" />
+              <div>
+                <p class="font-display text-sm font-bold text-charcoal mb-1">{item.label}</p>
+                <p class="text-xs text-charcoal-muted font-body leading-relaxed">{item.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What John knows -->
+  <section class="section bg-white" aria-labelledby="expertise-heading">
+    <div class="container max-w-4xl">
+      <h2 id="expertise-heading" class="section-heading mb-5">
+        What Does John Know About Maryland Weddings?
+      </h2>
+      <p class="text-stone-600 font-light leading-relaxed mb-8">
+        Fifty-plus weddings across the state builds a specific kind of knowledge that's hard to replicate. You can't Google your way to knowing which Baltimore venue coordinators are reliable and which ones you'll be chasing all day. Here's what it actually looks like in practice.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[
+          { title: 'Baltimore venues', detail: "He's worked events at Clipper Mill, Cylburn Arboretum, Motor House, Oregon Ridge Park, and the Engineers Club. He knows which ones have hidden fees, which venue coordinators communicate well, and which spaces photograph better than they look in the listing." },
+          { title: 'Annapolis area', detail: "Quiet Waters Park, William Paca Garden, Historic Inns of Annapolis, and the waterfront parks. He knows the permit timelines, the best photographers for the Annapolis aesthetic, and which caterers work well at Anne Arundel County locations." },
+          { title: 'Eastern Shore', detail: "Tilghman Island, St. Michaels, and the farm/barn venue scene. He's coordinated elopements along the Chesapeake Bay and knows which locations have reliable cell service for the day-of communications that matter." },
+          { title: 'Western Maryland', detail: "Cunningham Falls for elopements, vineyard venues near Frederick County, and the rural estate scene. He knows the DNR permit process for state park ceremonies and which venues have the access road logistics figured out." },
+        ].map((item) => (
+          <div class="bg-[#FAF1EE] rounded-lg p-6">
+            <h3 class="font-display text-base font-bold text-charcoal mb-2">{item.title}</h3>
+            <p class="text-sm text-stone-600 font-light leading-relaxed">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="values-heading">
+    <div class="container max-w-4xl">
+      <h2 id="values-heading" class="section-heading text-center mb-12">
+        What Does John Believe About Wedding Planning?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {values.map((v) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-5">
+              <div class="w-6 h-6 rounded-full bg-rose" />
+            </div>
+            <h3 class="font-display text-xl font-bold text-charcoal mb-3">{v.title}</h3>
+            <p class="text-sm text-stone-600 font-light leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white" aria-labelledby="faq-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="faq-heading" class="section-heading text-center mb-10">
+        Common Questions About Working with John
+      </h2>
+      <div class="space-y-3">
+        {[
+          {
+            q: 'How many weddings has John planned in Maryland?',
+            a: "Over 50 weddings across the state, including elopements, micro-weddings, and full-scale receptions. The venues range from Patterson Park in Baltimore City to Assateague Island on the Atlantic coast. The budgets range from $4,000 elopements to $22,000 full receptions.",
+          },
+          {
+            q: "Does John only work with budget weddings?",
+            a: "John specializes in Maryland weddings with total budgets under $20,000. This is deliberate, not a limitation. He's built his vendor network specifically for this market and he's genuinely good at it. Couples with luxury budgets would be better served by a planner who specializes in that market.",
+          },
+          {
+            q: "Does John work with LGBTQ+ couples?",
+            a: "Yes. John works with all couples regardless of gender identity or sexual orientation. Maryland is one of the most welcoming states for same-sex marriages, and John has planned weddings for LGBTQ+ couples across Baltimore, Annapolis, and the Eastern Shore.",
+          },
+          {
+            q: "What's John's cancellation or rescheduling policy?",
+            a: "John discusses cancellation and rescheduling terms during the free consultation and outlines them clearly in every contract before booking. Policies vary slightly by package and timing. If your circumstances change after booking, reach out directly : he handles these situations case by case.",
+          },
+          {
+            q: "Can I talk to couples John has worked with?",
+            a: "Yes. John can connect you with past clients who are willing to share their experience. He can also point you to reviews on Google, The Knot, or WeddingWire where past clients have left detailed feedback.",
+          },
+        ].map((faq, i) => (
+          <details class="bg-[#FAF1EE] border border-rose-light/40 rounded-lg" name="about-faq" open={i === 0}>
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{faq.q}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 font-light leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related links -->
+  <section class="section-sm bg-white">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <a href="/blog/average-wedding-cost-maryland" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display text-sm font-semibold text-charcoal group-hover:text-rose transition-colors">Average Maryland Wedding Cost</h3>
+          <p class="text-xs text-charcoal-muted font-body mt-1">What 50+ weddings taught John about real costs</p>
+        </a>
+        <a href="/services/day-of-wedding-coordinator" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display text-sm font-semibold text-charcoal group-hover:text-rose transition-colors">Day-of Coordination</h3>
+          <p class="text-xs text-charcoal-muted font-body mt-1">John's most requested service</p>
+        </a>
+        <a href="/faq" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display text-sm font-semibold text-charcoal group-hover:text-rose transition-colors">FAQ</h3>
+          <p class="text-xs text-charcoal-muted font-body mt-1">Common questions about working with John</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-rose">
+    <div class="container py-20 text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Ready to Work with John?</h2>
+      <p class="text-white/80 font-body mb-8 max-w-xl mx-auto">
+        Book a free 30-minute consultation. Tell John your vision, your guest count, and your budget. He'll tell you exactly what's possible and which package makes sense.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/contact" class="btn-white text-base px-8 py-4">Book My Free Consultation</a>
+        <a href="/wedding-planning-packages" class="inline-flex items-center justify-center px-8 py-4 border border-white/40 text-white font-body font-semibold rounded text-base hover:bg-white/10 transition-colors">
+          See Packages First
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

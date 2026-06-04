@@ -1,0 +1,371 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://baltimoreweddingplanner.com/services/elopement-planner-maryland#service',
+  name: 'Elopement Planning Maryland',
+  description: 'Professional Maryland elopement planner for intimate ceremonies and micro-weddings under 30 guests. John handles location permits, officiant, photography, and all logistics.',
+  provider: { '@type': 'LocalBusiness', '@id': 'https://baltimoreweddingplanner.com/#business' },
+  areaServed: { '@type': 'State', name: 'Maryland' },
+  offers: { '@type': 'Offer', priceCurrency: 'USD', priceRange: '$300 - $900', availability: 'https://schema.org/InStock' },
+  serviceType: 'Elopement Planning',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does an elopement planner do in Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "A Maryland elopement planner handles every logistical detail of your intimate ceremony: location scouting and permit applications, officiant booking, photographer coordination, ceremony timeline, and day-of presence. You focus on the moment. John handles everything else." },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does an elopement planner cost in Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "Maryland elopement planning packages start at $300 for ceremony coordination only. Full elopement packages including location scouting, permit applications, officiant coordination, and day-of presence run $500 to $900." },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between an elopement and a micro-wedding?',
+      acceptedAnswer: { '@type': 'Answer', text: "An elopement typically involves just the couple and an officiant, or a very small group under 10 people. A micro-wedding has 10 to 30 guests and usually includes a small reception. Both require the same marriage license in Maryland and can take place at the same types of locations." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you need a permit to elope in Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "It depends on the location. Groups under 25 people in most Baltimore City parks don't need a permit. State parks, county parks, and beach locations require permits ranging from $50 to $200. John handles all permit applications as part of his elopement planning service." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can you elope anywhere in Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "Yes, with the right permits. Maryland's most popular elopement locations include Quiet Waters Park in Annapolis, Patterson Park and Oregon Ridge Park in the Baltimore area, Cunningham Falls State Park in Frederick County, and Assateague Island on the Atlantic coast. John has arranged ceremonies at all of these locations." },
+    },
+  ],
+};
+
+const packages = [
+  {
+    name: 'Ceremony Only',
+    price: '$300 to $500',
+    guests: 'Up to 10 guests',
+    includes: [
+      'Ceremony location selection (up to 3 options)',
+      'Permit research and application',
+      'Officiant booking and coordination',
+      'Ceremony timeline (30 to 60 minutes)',
+      'Day-of presence (2 to 3 hours)',
+    ],
+    best: 'True elopements and courthouse ceremonies',
+  },
+  {
+    name: 'Full Elopement',
+    price: '$500 to $750',
+    guests: 'Up to 20 guests',
+    includes: [
+      'Everything in Ceremony Only',
+      'Photographer coordination (vendor list provided)',
+      'Florist sourcing for bouquet and boutonniere',
+      'Marriage license guidance',
+      'Day-of presence (4 to 6 hours)',
+      'Ceremony and post-ceremony timeline',
+    ],
+    best: 'Elopements with a photographer and small celebration after',
+    highlighted: true,
+  },
+  {
+    name: 'Micro-Wedding',
+    price: '$750 to $900',
+    guests: 'Up to 30 guests',
+    includes: [
+      'Everything in Full Elopement',
+      'Reception venue sourcing (restaurant, private space)',
+      'Catering coordination for small group',
+      'Full-day presence (6 to 8 hours)',
+      'Timeline from ceremony through reception',
+    ],
+    best: 'Intimate weddings with a small sit-down meal or celebration',
+  },
+];
+
+const locations = [
+  {
+    region: 'Baltimore Area',
+    spots: [
+      { name: 'Patterson Park', detail: 'Historic pagoda backdrop, no permit under 25 people, Inner Harbor area' },
+      { name: 'Oregon Ridge Park', detail: 'Wooded lake setting, Baltimore County permit $500 to $1,800' },
+      { name: 'Federal Hill Park', detail: 'City skyline views, small groups, no permit for under 25' },
+    ],
+  },
+  {
+    region: 'Annapolis Area',
+    spots: [
+      { name: 'Quiet Waters Park', detail: 'South River waterfront, Anne Arundel permit $50 to $150, year-round' },
+      { name: 'Annapolis City Dock', detail: 'Sailboat harbor views, public waterfront, no permit under 10 guests' },
+      { name: 'William Paca Garden', detail: 'Historic colonial garden, intimate setting, up to 50 guests' },
+    ],
+  },
+  {
+    region: 'Eastern Shore',
+    spots: [
+      { name: 'Assateague Island', detail: 'Atlantic beach ceremony, National Park permit $150, wild ponies' },
+      { name: 'Tilghman Island', detail: 'Chesapeake Bay waterfront, inn setting, intimate groups' },
+      { name: 'St. Michaels', detail: 'Chesapeake Bay Maritime Museum, waterfront ceremony spaces' },
+    ],
+  },
+  {
+    region: 'Western Maryland',
+    spots: [
+      { name: 'Cunningham Falls', detail: "Maryland's largest waterfall, DNR permit, Catoctin Mountains" },
+      { name: 'Deep Creek Lake', detail: 'Mountain lake setting, Garrett County, seasonal availability' },
+      { name: 'South Mountain', detail: 'Appalachian Trail overlooks, dramatic views, hiking required' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Maryland Elopement Planner | Intimate Ceremony Packages"
+  description="Maryland elopement planner for intimate ceremonies under 30 guests. John handles permits, officiant, and location scouting. Elopement packages from $300."
+  canonical="https://baltimoreweddingplanner.com/services/elopement-planner-maryland"
+  schema={[schema, faqSchema]}
+>
+  <div class="container">
+    <Breadcrumbs items={[
+      { label: 'Services', href: '/services/full-service-wedding-planning' },
+      { label: 'Elopement Planning' },
+    ]} />
+  </div>
+
+  <!-- Hero -->
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container max-w-3xl">
+      <span class="section-label mb-5 block w-fit bg-stone-100 text-stone-700 border-stone-300/50">Elopements and Micro-Weddings</span>
+      <h1 class="font-display text-4xl md:text-5xl font-medium text-stone-900 mb-5 leading-[1.15] tracking-tight">
+        Maryland Elopement Planner
+      </h1>
+      <p class="text-stone-600 font-light text-lg sm:text-xl leading-relaxed mb-4">
+        Intimate ceremonies. Real moments. Under 30 guests.
+      </p>
+      <p class="text-stone-600 font-light text-base sm:text-lg leading-relaxed mb-8">
+        John plans Maryland elopements and micro-weddings from location selection through the ceremony itself. Permits, officiant, photographer, timeline: all of it handled. You show up and get married.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/contact" class="btn-primary text-base px-8 py-4">Plan My Elopement</a>
+        <a href="/blog/how-to-get-married-in-maryland" class="btn-outline text-base px-8 py-4">Maryland Legal Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What an elopement planner does -->
+  <section class="section bg-white" aria-labelledby="what-heading">
+    <div class="container max-w-4xl">
+      <h2 id="what-heading" class="section-heading text-center mb-4">
+        What Does a Maryland Elopement Planner Do?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">
+        Most couples don't realize how many logistics go into even the simplest elopement. You've got permits, officiant coordination, timeline management, and vendor sourcing : and that's before the ceremony starts. John handles all of it.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+        {[
+          { title: 'Location scouting', desc: "John identifies 2 to 3 locations that match your vision, confirms they're available on your date, and checks permit requirements for each. You pick the one that feels right." },
+          { title: 'Permit applications', desc: "Maryland's state parks, county parks, and national seashore locations all have different permit processes. John handles the applications, fees, and any required insurance certificates so you don't have to." },
+          { title: 'Officiant coordination', desc: "John books a registered Maryland officiant or coordinates with your chosen friend who's getting ordained. He confirms they're listed correctly on your marriage license before the ceremony date." },
+          { title: 'Vendor sourcing', desc: "If you want a photographer, florist, or musician at your elopement, John's got vetted vendor recommendations and handles all the scheduling coordination on your behalf." },
+          { title: 'Marriage license guidance', desc: "John walks you through Maryland's marriage license process: which county's best for your situation, what documents you'll need, and how to time your application relative to the ceremony." },
+          { title: 'Day-of presence', desc: "John's there from setup through the ceremony's end. He manages the timeline, directs the officiant and photographer, and makes sure nothing goes sideways while you're focused on each other." },
+        ].map((item) => (
+          <div class="bg-[#FAF1EE] rounded-lg p-6">
+            <h3 class="font-display text-base font-bold text-charcoal mb-2">{item.title}</h3>
+            <p class="text-sm text-stone-600 font-light leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="packages-heading">
+    <div class="container">
+      <h2 id="packages-heading" class="section-heading text-center mb-4">
+        What Do Maryland Elopement Packages Include?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">
+        Three tiers depending on how many guests you're bringing and how much you want included.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {packages.map((pkg) => (
+          <div class={`rounded-lg border flex flex-col ${pkg.highlighted ? 'border-rose bg-white shadow-md' : 'border-rose-light/40 bg-white'}`}>
+            <div class="p-6 flex-1">
+              {pkg.highlighted && <span class="badge-rose mb-3 block w-fit">Most Popular</span>}
+              <h3 class="font-display text-xl font-bold text-charcoal mb-1">{pkg.name}</h3>
+              <p class="font-display text-2xl font-bold text-rose mb-1">{pkg.price}</p>
+              <p class="text-xs text-charcoal-muted font-body mb-4">{pkg.guests}</p>
+              <ul class="space-y-2 mb-5">
+                {pkg.includes.map((item) => (
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-rose flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-xs font-body text-charcoal-light">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="text-xs text-charcoal-muted font-body italic">Best for: {pkg.best}</p>
+            </div>
+            <div class="p-6 pt-0">
+              <a href="/contact" class={`w-full justify-center ${pkg.highlighted ? 'btn-primary' : 'btn-outline'}`}>
+                Book Free Consult
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-sm text-charcoal-muted font-body">
+        All packages include a free 30-minute consultation. <a href="/wedding-planning-packages" class="text-rose hover:underline">See full pricing comparison</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Locations -->
+  <section class="section bg-white" aria-labelledby="locations-heading">
+    <div class="container">
+      <h2 id="locations-heading" class="section-heading text-center mb-4">
+        Where Can You Elope in Maryland?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">
+        Maryland's variety of ceremony locations is one of the reasons it's such an elopement-friendly state. You've got beaches, waterfalls, waterfront parks, city gardens, and mountain overlooks, all within a few hours of each other. Here are the spots John works with most frequently.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {locations.map((region) => (
+          <div>
+            <h3 class="font-display text-lg font-bold text-charcoal mb-4 pb-2 border-b border-rose-light/40">{region.region}</h3>
+            <div class="space-y-4">
+              {region.spots.map((spot) => (
+                <div class="flex gap-3">
+                  <div class="w-1.5 h-1.5 rounded-full bg-rose flex-shrink-0 mt-2" />
+                  <div>
+                    <p class="font-display text-sm font-semibold text-charcoal">{spot.name}</p>
+                    <p class="text-xs text-charcoal-muted font-body leading-relaxed">{spot.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison: elopement vs micro vs courthouse -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="compare-heading">
+    <div class="container max-w-4xl">
+      <h2 id="compare-heading" class="section-heading text-center mb-4">
+        Elopement vs. Micro-Wedding vs. Courthouse: What's the Difference?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-10 max-w-2xl mx-auto">
+        All three are legally identical in Maryland. You'll need the same license, the same officiant, the same one witness. The difference is size, setting, and how much you're planning around the ceremony itself.
+      </p>
+
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-rose-50">
+              <th class="text-left p-3 font-display font-semibold text-charcoal border border-rose-light/40"></th>
+              <th class="text-left p-3 font-display font-semibold text-charcoal border border-rose-light/40">Courthouse</th>
+              <th class="text-left p-3 font-display font-semibold text-rose border border-rose-light/40">Elopement</th>
+              <th class="text-left p-3 font-display font-semibold text-charcoal border border-rose-light/40">Micro-Wedding</th>
+            </tr>
+          </thead>
+          <tbody class="text-charcoal-muted font-body">
+            <tr><td class="p-3 border border-rose-light/30 font-medium text-charcoal">Guest count</td><td class="p-3 border border-rose-light/30">0 to 5</td><td class="p-3 border border-rose-light/30">2 to 15</td><td class="p-3 border border-rose-light/30">10 to 30</td></tr>
+            <tr class="bg-white"><td class="p-3 border border-rose-light/30 font-medium text-charcoal">Total cost</td><td class="p-3 border border-rose-light/30">$100 to $250</td><td class="p-3 border border-rose-light/30">$500 to $3,000</td><td class="p-3 border border-rose-light/30">$3,000 to $10,000</td></tr>
+            <tr><td class="p-3 border border-rose-light/30 font-medium text-charcoal">Lead time</td><td class="p-3 border border-rose-light/30">1 to 3 days</td><td class="p-3 border border-rose-light/30">2 to 8 weeks</td><td class="p-3 border border-rose-light/30">4 to 12 weeks</td></tr>
+            <tr class="bg-white"><td class="p-3 border border-rose-light/30 font-medium text-charcoal">Photographer</td><td class="p-3 border border-rose-light/30">Optional</td><td class="p-3 border border-rose-light/30">Usually yes</td><td class="p-3 border border-rose-light/30">Yes</td></tr>
+            <tr><td class="p-3 border border-rose-light/30 font-medium text-charcoal">Reception</td><td class="p-3 border border-rose-light/30">None or dinner out</td><td class="p-3 border border-rose-light/30">None or private dinner</td><td class="p-3 border border-rose-light/30">Small sit-down or catered</td></tr>
+            <tr class="bg-white"><td class="p-3 border border-rose-light/30 font-medium text-charcoal">Planner involved?</td><td class="p-3 border border-rose-light/30">Usually not needed</td><td class="p-3 border border-rose-light/30">Recommended for permits and logistics</td><td class="p-3 border border-rose-light/30">Recommended for all coordination</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white" aria-labelledby="faq-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="faq-heading" class="section-heading text-center mb-10">
+        Maryland Elopement: Common Questions
+      </h2>
+      <div class="space-y-3">
+        {[
+          {
+            q: 'What does a Maryland elopement planner actually do?',
+            a: "John handles everything that isn't the ceremony itself. That means location scouting, permit applications, officiant booking, vendor coordination, marriage license guidance, and day-of timeline management. You show up to the location at the right time. He's already confirmed everything else.",
+          },
+          {
+            q: 'How much does an elopement cost in Maryland?',
+            a: "A bare-bones Maryland elopement (marriage license + courthouse ceremony) costs $100 to $250 total. An elopement with a location, permit, officiant, and photographer runs $1,500 to $3,000 depending on the photographer and location. John's planning packages start at $300 on top of those vendor costs. <a href='/wedding-planning-packages' class='text-rose hover:underline'>See full pricing</a>.",
+          },
+          {
+            q: "Do you need a permit to elope in Maryland?",
+            a: "It depends on where you want to hold the ceremony. Groups under 25 people in most Baltimore City parks don't need a permit. State parks, national seashore locations (like Assateague Island), and Anne Arundel County parks (like Quiet Waters) require permits ranging from $50 to $200. John handles all permit applications as part of his elopement packages.",
+          },
+          {
+            q: "What's the fastest way to get married in Maryland?",
+            a: "Maryland has no waiting period in most counties, so you can apply for your marriage license and hold a ceremony the same day. A courthouse ceremony with the judge costs $25 to $50 on top of the license fee. For couples who want something more personal but still fast, an officiated park ceremony can be arranged in as little as 1 to 2 weeks. <a href='/blog/how-to-get-married-in-maryland' class='text-rose hover:underline'>See the full legal guide</a>.",
+          },
+          {
+            q: 'Can you elope with kids or family present?',
+            a: "Absolutely. Many couples choose to elope with their children, parents, or a handful of close friends present. As long as the total group stays within the permit limits for your chosen location, anyone you want can be there. If you're inviting more than 10 people, John will book a location with the right permit capacity.",
+          },
+        ].map((faq, i) => (
+          <details class="bg-[#FAF1EE] border border-rose-light/40 rounded-lg" name="elope-faq" open={i === 0}>
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{faq.q}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 font-light leading-relaxed" set:html={faq.a} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal links + CTA -->
+  <section class="section bg-[#FAF1EE]">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="/blog/how-to-get-married-in-maryland" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">How to Get Married in Maryland</h3>
+          <p class="text-sm text-charcoal-muted font-body">Legal requirements, marriage license costs by county, and ceremony location options for 2026.</p>
+        </a>
+        <a href="/blog/maryland-marriage-license" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Maryland Marriage License Guide</h3>
+          <p class="text-sm text-charcoal-muted font-body">County-by-county fees, waiting periods, and what documents you'll need to bring.</p>
+        </a>
+        <a href="/wedding-planning-packages" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Elopement Packages and Pricing</h3>
+          <p class="text-sm text-charcoal-muted font-body">Full breakdown of what's included at each elopement package tier. Starts at $300.</p>
+        </a>
+      </div>
+
+      <div class="bg-[#C89481] rounded-2xl p-10 md:p-14 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-4">Plan Your Maryland Elopement</h2>
+        <p class="text-white/80 font-body mb-8 max-w-xl mx-auto">
+          Free 30-minute consultation. Tell John your vision, preferred location, and guest count. He'll build a plan and handle every detail from there.
+        </p>
+        <a href="/contact" class="btn-white text-base px-8 py-4">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</Layout>

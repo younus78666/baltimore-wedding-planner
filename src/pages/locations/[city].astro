@@ -1,0 +1,253 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { city: 'annapolis-wedding-planner' },
+      props: {
+        city: 'Annapolis',
+        county: 'Anne Arundel County',
+        slug: 'annapolis-wedding-planner',
+        primaryKw: 'annapolis wedding planner',
+        intro: "Annapolis is one of the most sought-after wedding destinations in Maryland. The Chesapeake Bay waterfront, colonial-era architecture, and walkable downtown create a setting that's genuinely hard to find anywhere else. John has coordinated weddings and elopements across Annapolis, from Quiet Waters Park ceremonies to Historic Inns receptions, and he knows which venues deliver on their photos and which ones have parking nightmares.",
+        venues: ['Quiet Waters Park (Anne Arundel permit)', 'William Paca House and Garden', 'Historic Inns of Annapolis', 'Annapolis Maritime Museum', 'Annapolis City Dock area'],
+        note: "One thing couples overlook: Naval Academy graduation weekend in late May fills every hotel within 30 miles of Annapolis. If you're considering a late May date, confirm hotel availability for guests immediately.",
+        faqs: [
+          { q: "Does John serve Annapolis and Anne Arundel County?", a: "Yes. John is based in Baltimore and serves all of Anne Arundel County, including Annapolis, Severna Park, Pasadena, and surrounding areas. He's coordinated multiple events at Annapolis venues and knows the area well." },
+          { q: "What Annapolis venues does John recommend for budget weddings?", a: "Quiet Waters Park is the strongest value in the Annapolis market, with South River waterfront access and pavilion rental starting around $500 to $2,000. For indoor options, Maryland Hall for the Creative Arts runs $3,000 to $7,000 with outside catering allowed. The City Dock public waterfront works beautifully for small elopements under 10 people with no permit required." },
+          { q: "How far is John's travel fee for Annapolis weddings?", a: "Annapolis is within John's standard service area with no travel fee. It's approximately 35 miles from Baltimore, well within the 60-mile radius where no additional travel charge applies." },
+        ],
+      },
+    },
+    {
+      params: { city: 'columbia-md-wedding-planner' },
+      props: {
+        city: 'Columbia',
+        county: 'Howard County',
+        slug: 'columbia-md-wedding-planner',
+        primaryKw: 'columbia md wedding planner',
+        intro: "Columbia sits roughly halfway between Baltimore and Washington DC, which makes it a natural choice for couples whose guests are split between the two cities. Howard County's venue scene has grown significantly over the past decade, with lakeside settings at Lake Kittamaqundi and estate properties throughout the county. John serves Columbia and Howard County couples with the same budget-focused approach he brings to Baltimore and Annapolis weddings.",
+        venues: ['Lake Kittamaqundi waterfront', 'Vantage House', 'Wilde Lake area parks', 'Howard County parks system', 'Private estate rentals in Howard County'],
+        note: "Columbia's park system is well maintained and permits are accessible through Howard County Recreation and Parks. For couples who want a lakeside ceremony without premium venue pricing, the Kittamaqundi area is worth exploring.",
+        faqs: [
+          { q: "Does John serve Columbia, MD and Howard County?", a: "Yes. Columbia and Howard County are fully within John's service area with no travel fee. He's planned weddings across Howard County and is familiar with the venue landscape from the lakeside spaces to the estate properties." },
+          { q: "What are the best wedding venues in Columbia, Maryland?", a: "Lake Kittamaqundi and the surrounding Columbia lake parks offer waterfront ceremony settings at accessible prices. Howard County's permit system is easy to work with and fees are lower than comparable Baltimore City parks. Private estate rentals in the county run $2,000 to $5,000 for full-day use with outside catering typically allowed." },
+          { q: "Is Columbia a good choice for couples between Baltimore and DC?", a: "Yes. It's a genuinely useful location when your guest list splits between both cities. Most guests from Baltimore or DC are within 30 to 45 minutes of Columbia. Hotel availability is good and parking is significantly easier than either city center." },
+        ],
+      },
+    },
+    {
+      params: { city: 'towson-wedding-planner' },
+      props: {
+        city: 'Towson',
+        county: 'Baltimore County',
+        slug: 'towson-wedding-planner',
+        primaryKw: 'towson wedding planner',
+        intro: "Towson is Baltimore's most accessible suburb for couples who want proximity to city vendors and infrastructure without the city itself. Baltimore County's estate properties, historic sites, and park venues give couples genuine variety. John's based just south of Towson in Baltimore City and has coordinated events at Oregon Ridge Park, Hampton National Historic Site, and several of the county's private estates.",
+        venues: ['Oregon Ridge Park Nature Center', 'Hampton National Historic Site', 'Goucher College venues', 'Sheraton Towson', 'Private estate rentals in Baltimore County'],
+        note: "Oregon Ridge Park is one of the most consistently underrated venues in the greater Baltimore area. The nature center provides indoor backup for outdoor ceremonies, outside catering is allowed, and permits through Baltimore County are accessible at $500 to $1,800.",
+        faqs: [
+          { q: "Does John serve Towson and Baltimore County?", a: "Yes. Towson and all of Baltimore County are within John's primary service area. He's planned multiple weddings at venues throughout the county, including Oregon Ridge Park and Hampton National Historic Site." },
+          { q: "What are the best wedding venues in Towson, Maryland?", a: "Oregon Ridge Park offers the best combination of setting, flexibility, and price in Towson. Hampton National Historic Site is a strong choice for small weddings that want genuine historic estate character. For indoor events, Goucher College has event spaces and the Sheraton Towson handles larger receptions." },
+          { q: "Is Towson convenient for Baltimore wedding guests?", a: "Very. Towson is 10 to 15 minutes north of Baltimore City and has better parking than the city. Most Baltimore vendors have worked in Towson venues regularly, so no extra travel fees typically apply." },
+        ],
+      },
+    },
+    {
+      params: { city: 'frederick-wedding-planner' },
+      props: {
+        city: 'Frederick',
+        county: 'Frederick County',
+        slug: 'frederick-wedding-planner',
+        primaryKw: 'frederick md wedding planner',
+        intro: "Frederick County is Maryland's best option for couples who want the rural Maryland aesthetic: rolling hills, mountain backdrops, vineyard estates, and farm venues that feel genuinely removed from the suburbs. Historic downtown Frederick adds a colonial town character that complements both rustic and formal weddings. John serves Frederick County couples and has coordinated elopements at Cunningham Falls State Park and events at several of the county's vineyard and farm venues.",
+        venues: ['Distillery Lane Ciderworks', 'Winery at Bull Run area', 'Historic Downtown Frederick', 'Cunningham Falls State Park', 'Private farm and barn rentals'],
+        note: "Frederick County's farm and barn rental market is genuinely affordable compared to comparable venues elsewhere in Maryland. Full-day rentals for self-catered events run $1,500 to $4,000, and the agricultural landscape creates a visual setting you can't replicate in a city venue.",
+        faqs: [
+          { q: "Does John serve Frederick, MD and Frederick County?", a: "Yes. Frederick County is within John's service area. He's coordinated elopements at Cunningham Falls State Park and has vendor relationships with photographers and caterers who work regularly in the Frederick area." },
+          { q: "What are the best wedding venues in Frederick, Maryland?", a: "Cunningham Falls State Park is the top choice for elopements and micro-weddings (DNR permit $100 to $200). For farm and estate venues, Frederick County has several private properties in the $2,000 to $5,000 range. Historic downtown Frederick has event spaces that work well for smaller indoor receptions." },
+          { q: "Is Frederick too far from Baltimore for day-of vendors?", a: "Frederick is about 50 miles from Baltimore, within John's standard service area with no travel fee. Some Baltimore-based photographers and caterers charge a modest travel fee for Frederick events ($50 to $150 typically). John can recommend vendors who work in Frederick regularly without travel surcharges." },
+        ],
+      },
+    },
+    {
+      params: { city: 'rockville-wedding-planner' },
+      props: {
+        city: 'Rockville',
+        county: 'Montgomery County',
+        slug: 'rockville-wedding-planner',
+        primaryKw: 'rockville wedding planner',
+        intro: "Rockville and Montgomery County serve a large wedding market that spans the DC suburbs, and couples here often have guest lists split between Maryland, Northern Virginia, and DC proper. John serves Montgomery County couples with the same budget-focused approach he brings to Baltimore and Annapolis. He's familiar with the Montgomery County venue landscape and the vendor ecosystem that works well in this market.",
+        venues: ['Strathmore Music Center', 'Rock Creek Regional Park', 'Rockville Civic Center Park', 'Montgomery County parks system', 'Private venue rentals in Montgomery County'],
+        note: "Montgomery County requires a 48-hour waiting period for marriage licenses, unlike most other Maryland counties. If you're planning a same-day ceremony, you'll need to apply at a Circuit Court in a different county (Anne Arundel or Howard are closest) and hold the ceremony in Montgomery County. John walks clients through this during the consultation.",
+        faqs: [
+          { q: "Does John serve Rockville and Montgomery County?", a: "Yes. John serves all of Montgomery County, including Rockville, Bethesda, Gaithersburg, and Silver Spring. Montgomery County is within his standard service area and no travel fee applies." },
+          { q: "What is the 48-hour waiting period for Montgomery County marriage licenses?", a: "Montgomery County and Prince George's County require a 48-hour wait between when you apply for your marriage license and when it's issued. If you want a same-day ceremony, apply at a Circuit Court in a county without the waiting period (Baltimore City, Anne Arundel, or Howard County), then hold your ceremony in Montgomery County. The license is valid anywhere in Maryland regardless of where you applied." },
+          { q: "What wedding venues in Rockville work for budget weddings?", a: "Rock Creek Regional Park has pavilion and ceremony space through Montgomery County parks at accessible prices ($200 to $1,000). Strathmore Music Center works for larger events but carries premium pricing. For outdoor ceremonies, Rockville Civic Center Park has permit options through the City of Rockville." },
+        ],
+      },
+    },
+  ];
+}
+
+const { city, county, slug, primaryKw, intro, venues, note, faqs } = Astro.props;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `${city} Wedding Planner`,
+    description: `Professional wedding planner serving ${city}, Maryland. John plans budget-friendly weddings in ${county} with full-service planning, day-of coordination, and elopements.`,
+    provider: { '@type': 'LocalBusiness', '@id': 'https://baltimoreweddingplanner.com/#business' },
+    areaServed: { '@type': 'City', name: city, containedInPlace: { '@type': 'State', name: 'Maryland' } },
+    url: `https://baltimoreweddingplanner.com/locations/${slug}`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title={`${city} Wedding Planner | Serving ${county}, MD`}
+  description={`Budget-friendly ${city}, MD wedding planner. Full-service planning, day-of coordination, and elopements for ${county} couples. Free consultation.`}
+  canonical={`https://baltimoreweddingplanner.com/locations/${slug}`}
+  schema={schema}
+>
+  <div class="container">
+    <Breadcrumbs items={[
+      { label: 'Service Areas', href: '/locations' },
+      { label: `${city} Wedding Planner` },
+    ]} />
+  </div>
+
+  <!-- Hero -->
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container max-w-3xl">
+      <span class="section-label mb-5 block w-fit">{county}</span>
+      <h1 class="font-display text-4xl md:text-5xl font-medium text-stone-900 mb-5 leading-[1.15] tracking-tight">
+        {city} Wedding Planner
+      </h1>
+      <p class="text-stone-600 font-light text-lg sm:text-xl leading-relaxed mb-8">
+        John provides budget-friendly wedding planning for couples in {city} and throughout {county}.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="/contact" class="btn-primary text-base px-8 py-4">Book a Free Consultation</a>
+        <a href="/wedding-planning-packages" class="btn-outline text-base px-8 py-4">View Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unique intro -->
+  <section class="section bg-white" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2 id="about-heading" class="section-heading mb-5">
+            Wedding Planning in {city}, Maryland
+          </h2>
+          <p class="text-stone-600 font-light leading-relaxed mb-6">
+            {intro}
+          </p>
+          <p class="text-stone-600 font-light leading-relaxed mb-4">
+            All four services are available in {city}: full-service planning, day-of coordination, partial planning, and elopement coordination. Packages are designed for weddings under $20,000.
+          </p>
+          <div class="grid grid-cols-2 gap-4 mt-6">
+            <a href="/services/full-service-wedding-planning" class="text-sm font-semibold font-body text-rose hover:text-rose-dark transition-colors">Full-Service Planning →</a>
+            <a href="/services/day-of-wedding-coordinator" class="text-sm font-semibold font-body text-rose hover:text-rose-dark transition-colors">Day-of Coordination →</a>
+            <a href="/services/partial-wedding-planning" class="text-sm font-semibold font-body text-rose hover:text-rose-dark transition-colors">Partial Planning →</a>
+            <a href="/services/elopement-planner-maryland" class="text-sm font-semibold font-body text-rose hover:text-rose-dark transition-colors">Elopements →</a>
+          </div>
+        </div>
+
+        <div class="bg-[#FAF1EE] rounded-lg p-8">
+          <h3 class="font-display text-xl font-bold text-charcoal mb-5">Popular {city} Wedding Venues</h3>
+          <ul class="space-y-3 mb-6" role="list">
+            {venues.map((v) => (
+              <li class="flex items-center gap-3">
+                <div class="w-1.5 h-1.5 rounded-full bg-rose flex-shrink-0" aria-hidden="true" />
+                <span class="text-sm font-body text-charcoal-light">{v}</span>
+              </li>
+            ))}
+          </ul>
+
+          {note && (
+            <div class="bg-white rounded-lg p-4 border border-rose-light/40">
+              <p class="text-xs text-charcoal-muted font-body leading-relaxed">
+                <strong class="text-charcoal">John's note:</strong> {note}
+              </p>
+            </div>
+          )}
+
+          <div class="mt-5 pt-5 border-t border-rose-light/30">
+            <a href="/blog/wedding-venues-in-maryland" class="text-sm font-semibold font-body text-rose hover:text-rose-dark transition-colors">
+              Browse the Maryland Venues Guide →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City-specific FAQ -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="faq-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="faq-heading" class="section-heading text-center mb-10">
+        Common Questions About {city} Wedding Planning
+      </h2>
+      <div class="space-y-3">
+        {faqs.map((faq, i) => (
+          <details class="bg-white border border-rose-light/40 rounded-lg" name="city-faq" open={i === 0}>
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{faq.q}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 font-light leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related links + CTA -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="/wedding-planning-packages" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Packages and Pricing</h3>
+          <p class="text-sm text-charcoal-muted font-body">All four service tiers with transparent pricing for {county} couples.</p>
+        </a>
+        <a href="/blog/wedding-venues-in-maryland" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Maryland Venue Guide</h3>
+          <p class="text-sm text-charcoal-muted font-body">25+ venues statewide with real pricing, capacity, and honest details.</p>
+        </a>
+        <a href="/services/day-of-wedding-coordinator" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Day-of Coordination</h3>
+          <p class="text-sm text-charcoal-muted font-body">John's most popular service, available in {city} from $500.</p>
+        </a>
+      </div>
+
+      <div class="bg-[#C89481] rounded-2xl p-10 md:p-14 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-4">
+          Planning a {city} Wedding?
+        </h2>
+        <p class="text-white/80 font-body mb-8 max-w-xl mx-auto">
+          Book a free 30-minute consultation. John will confirm availability for your {city} wedding date and tell you exactly which package fits your situation.
+        </p>
+        <a href="/contact" class="btn-white text-base px-8 py-4">Book My Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</Layout>

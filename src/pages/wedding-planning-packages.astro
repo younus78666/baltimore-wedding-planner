@@ -1,0 +1,309 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const packages = [
+  {
+    name: 'Elopement Package',
+    price: '$300 to $500',
+    badge: 'Intimate Ceremonies',
+    badgeClass: 'badge-sage',
+    href: '/services/elopement-planner-maryland',
+    desc: 'For intimate ceremonies under 30 guests anywhere in Maryland.',
+    features: [
+      'Location scouting (up to 3 options)',
+      'Permit research and application',
+      'Officiant booking and coordination',
+      'Ceremony timeline creation',
+      'Day-of presence (4 to 6 hours)',
+      'Emergency kit on hand',
+    ],
+    best: "You've decided to elope or have a micro-wedding and don't want to manage the logistics yourself.",
+  },
+  {
+    name: 'Day-of Coordination',
+    price: '$500 to $1,500',
+    badge: 'Most Popular',
+    badgeClass: 'badge-rose',
+    href: '/services/day-of-wedding-coordinator',
+    desc: "You've planned everything. John runs the day from setup to send-off.",
+    features: [
+      'Pre-wedding planning call (2 weeks out)',
+      'Vendor contact confirmation',
+      '15-minute interval timeline creation',
+      'Ceremony rehearsal direction (1 hour)',
+      'Full day-of presence (up to 10 hours)',
+      'Vendor arrival and payment coordination',
+      'Wedding party direction and cueing',
+      'Emergency kit on hand',
+    ],
+    highlighted: true,
+    best: "You've booked all your vendors and have a plan, but you want a professional running the actual day.",
+  },
+  {
+    name: 'Partial Planning',
+    price: '$800 to $1,800',
+    badge: 'Targeted Help',
+    badgeClass: 'badge-sage',
+    href: '/services/partial-wedding-planning',
+    desc: 'Professional help with the specific parts of planning where you need it most.',
+    features: [
+      'Up to 10 planning consultations',
+      'Vendor sourcing for up to 5 categories',
+      'Contract review for each vendor',
+      'Budget creation and management',
+      'Timeline creation',
+      'Day-of coordination included',
+    ],
+    best: "You've started planning but hit a wall on vendors, budget, or the final stretch.",
+  },
+  {
+    name: 'Full-Service Planning',
+    price: '$1,500 to $2,800',
+    badge: 'Complete Management',
+    badgeClass: 'badge-rose',
+    href: '/services/full-service-wedding-planning',
+    desc: 'End-to-end planning from engagement through reception. Every detail handled.',
+    features: [
+      'Unlimited planning consultations',
+      'Full budget creation and monthly tracking',
+      'All vendor sourcing and negotiation',
+      'Contract review for every vendor',
+      'Venue search and booking assistance',
+      'Guest list management',
+      'Design and decor direction',
+      'Day-of coordination included',
+      'Emergency planning and backup vendors',
+    ],
+    best: "You want someone to handle all of it, from the first venue search to the last vendor payment.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does a wedding planner cost in Baltimore, Maryland?',
+      acceptedAnswer: { '@type': 'Answer', text: "Maryland wedding planning packages range from $300 for elopement coordination to $2,800 for full-service planning. All packages are designed for couples with budgets under $20,000." },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is included in day-of wedding coordination?',
+      acceptedAnswer: { '@type': 'Answer', text: "Day-of coordination includes a pre-wedding planning call, vendor contact confirmation, detailed 15-minute timeline, ceremony rehearsal direction, full day-of presence (up to 10 hours), vendor coordination, wedding party direction, and an emergency kit." },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between partial planning and full-service planning?',
+      acceptedAnswer: { '@type': 'Answer', text: "Partial planning helps with specific categories you need: vendor sourcing for 3 to 5 categories, contract review, budget management, and day-of coordination. Full-service planning handles everything from the first venue search through the final vendor payment at the reception." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which wedding planning package should I choose?',
+      acceptedAnswer: { '@type': 'Answer', text: "Choose day-of coordination if you've planned everything yourself and need someone to run the day. Choose partial planning if you've started but need help with specific vendors or the final stretch. Choose full-service if you want everything handled from the engagement forward. Elopement packages are for intimate ceremonies under 30 guests." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I upgrade my package after booking?',
+      acceptedAnswer: { '@type': 'Answer', text: "Yes. If you book day-of coordination and later realize you need more help, John can discuss upgrading to partial or full-service planning based on what's already been completed and what's still ahead." },
+    },
+  ],
+};
+---
+
+<Layout
+  title="Wedding Planning Packages for Maryland | From $300"
+  description="Maryland wedding planner packages from $300 to $2,800. Elopement, day-of coordination, partial, and full-service planning. Transparent pricing for 2026."
+  canonical="https://baltimoreweddingplanner.com/wedding-planning-packages"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Packages and Pricing' }]} />
+  </div>
+
+  <!-- Hero -->
+  <section class="section-sm bg-[#FAF1EE]">
+    <div class="container text-center max-w-2xl mx-auto">
+      <h1 class="section-heading mb-4">Wedding Planning Packages and Pricing</h1>
+      <p class="section-sub">
+        Transparent pricing for Maryland weddings. All packages are designed for couples with budgets under $20,000.
+        Every inquiry includes a free 30-minute consultation, and you'll get a real recommendation, not a sales pitch.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing cards -->
+  <section class="section bg-white" aria-labelledby="packages-heading">
+    <div class="container">
+      <h2 id="packages-heading" class="sr-only">Wedding Planning Package Options</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        {packages.map((pkg) => (
+          <div class={`rounded-lg border flex flex-col ${pkg.highlighted ? 'border-rose bg-rose-50 shadow-md' : 'border-rose-light/40 bg-white'}`}>
+            <div class="p-6 flex-1">
+              <span class={`${pkg.badgeClass} mb-4 block w-fit`}>{pkg.badge}</span>
+              <h3 class="font-display text-xl font-bold text-charcoal mb-1">{pkg.name}</h3>
+              <p class="font-display text-2xl font-bold text-rose mb-3">{pkg.price}</p>
+              <p class="text-sm text-charcoal-muted font-body leading-relaxed mb-5">{pkg.desc}</p>
+              <ul class="space-y-2.5 mb-5" role="list">
+                {pkg.features.map((f) => (
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-rose flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-xs font-body text-charcoal-light">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="bg-white/70 rounded p-3 text-xs text-charcoal-muted font-body leading-relaxed italic">
+                <strong class="text-charcoal not-italic">Best if:</strong> {pkg.best}
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <a href="/contact" class={`w-full justify-center ${pkg.highlighted ? 'btn-primary' : 'btn-outline'}`}>
+                Book Free Consult
+              </a>
+              <a href={pkg.href} class="block text-center text-xs text-charcoal-muted hover:text-rose transition-colors mt-3">
+                Learn more about this package
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 bg-[#FAF1EE] rounded-lg p-8 text-center max-w-2xl mx-auto">
+        <p class="font-display text-lg font-semibold text-charcoal mb-2">Not sure which package fits your situation?</p>
+        <p class="text-sm text-charcoal-muted font-body mb-5">Book a free 30-minute consultation. John will recommend the right package based on your vision, how much planning you've already done, and your budget.</p>
+        <a href="/contact" class="btn-primary">Book Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to choose -->
+  <section class="section bg-[#FAF1EE]" aria-labelledby="choose-heading">
+    <div class="container max-w-4xl">
+      <h2 id="choose-heading" class="section-heading text-center mb-4">
+        How Do You Choose the Right Maryland Wedding Planning Package?
+      </h2>
+      <p class="text-charcoal-muted text-center mb-12 max-w-2xl mx-auto">
+        The right package depends on three things: how much you've already done, how much you're comfortable doing yourself, and when your wedding is. If you're not sure, the free consultation will sort it out.
+      </p>
+
+      <div class="space-y-4">
+        {[
+          {
+            trigger: "You've booked nothing and just got engaged",
+            answer: "Full-service planning is the right fit. John starts from scratch with you: venue search, vendor sourcing, budget creation, everything. The earlier you start, the more options you'll have for venue availability and peak-season vendors.",
+            package: "Full-Service Planning ($1,500 to $2,800)",
+          },
+          {
+            trigger: "You've booked most vendors but need help finishing",
+            answer: "Partial planning gives you targeted support where you're stuck, whether that's the last few vendors, contract review, or just building a timeline and getting a professional perspective on what you've already decided.",
+            package: "Partial Planning ($800 to $1,800)",
+          },
+          {
+            trigger: "You've planned everything and just need someone to run the day",
+            answer: "Day-of coordination is what you're looking for. John takes over 2 to 3 weeks before the wedding, builds your timeline, confirms vendors, runs the rehearsal, and manages the full day so you don't handle a single logistics question on your wedding day.",
+            package: "Day-of Coordination ($500 to $1,500)",
+          },
+          {
+            trigger: "You want an elopement or very small ceremony under 30 guests",
+            answer: "The elopement package covers everything specific to intimate ceremonies: location scouting, permits, officiant booking, and day-of coordination for the ceremony itself. It's designed to handle the logistics of a meaningful small ceremony without the overhead of a larger package.",
+            package: "Elopement Package ($300 to $500)",
+          },
+          {
+            trigger: "Your wedding is 4 to 6 weeks away and you're overwhelmed",
+            answer: "Reach out and be honest about where you are. John has taken on short-timeline clients before. Depending on what's left to do, day-of coordination or partial planning can still make a real difference, even close to the date.",
+            package: "Book a consultation to assess",
+          },
+        ].map((item) => (
+          <details class="bg-white border border-rose-light/40 rounded-lg" name="choose">
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{item.trigger}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-charcoal-muted font-body leading-relaxed mb-2">{item.answer}</p>
+              <p class="text-xs font-semibold text-rose font-body">Recommended: {item.package}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white" aria-labelledby="faq-heading">
+    <div class="container max-w-3xl mx-auto">
+      <h2 id="faq-heading" class="section-heading text-center mb-10">
+        Pricing and Packages: Common Questions
+      </h2>
+      <div class="space-y-3">
+        {[
+          {
+            q: 'How much does a wedding planner cost in Baltimore, Maryland?',
+            a: "John's packages run $300 for elopement coordination up to $2,800 for full-service planning. All packages are built for Maryland couples with total wedding budgets under $20,000. Day-of coordination is the most common starting point at $500 to $1,500.",
+          },
+          {
+            q: "What's the difference between partial planning and full-service?",
+            a: "Partial planning helps with specific categories: vendor sourcing for 3 to 5 areas, contract review, budget management, and day-of coordination. Full-service covers everything from the first venue search through the final vendor payment at your reception. If you've already started planning and need help finishing, partial is the right fit. If you're starting from scratch, full-service is better.",
+          },
+          {
+            q: 'Is the free consultation really free?',
+            a: "Yes. The 30-minute consultation is completely free with no commitment. John uses it to understand your situation, tell you honestly which package fits, and give you a real quote. If the timing or budget doesn't work out, there's no obligation.",
+          },
+          {
+            q: 'Can I add vendors or customize a package?',
+            a: "Yes. The packages above are starting points, not rigid boxes. If you need something slightly different (day-of coordination plus help with one specific vendor category, for example), reach out and John can put together a custom quote.",
+          },
+          {
+            q: 'Do the packages include the wedding day itself?',
+            a: "Day-of coordination, partial planning, and full-service all include day-of coverage. The elopement package also includes day-of presence for the ceremony. The only package without day-of coverage built in is a theoretical vendor-only consultation, which isn't one of John's standard offerings.",
+          },
+        ].map((faq, i) => (
+          <details class="bg-[#FAF1EE] border border-rose-light/40 rounded-lg" name="pricing-faq" open={i === 0}>
+            <summary class="flex items-center justify-between p-5 gap-4 cursor-pointer">
+              <h3 class="font-display text-base font-semibold text-charcoal text-left">{faq.q}</h3>
+              <svg class="faq-icon w-5 h-5 text-rose flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5">
+              <p class="text-sm text-stone-600 font-light leading-relaxed">{faq.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal links + CTA -->
+  <section class="section bg-[#FAF1EE]">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <a href="/services/day-of-wedding-coordinator" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Day-of Coordination Details</h3>
+          <p class="text-sm text-charcoal-muted font-body">What's included, how the process works, and what to expect on the day.</p>
+        </a>
+        <a href="/services/full-service-wedding-planning" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Full-Service Planning Details</h3>
+          <p class="text-sm text-charcoal-muted font-body">Month-by-month breakdown of what full-service planning covers across 12 to 18 months.</p>
+        </a>
+        <a href="/blog/average-wedding-cost-maryland" class="card p-5 hover:shadow-md hover:border-rose/30 transition-all group">
+          <h3 class="font-display font-semibold text-charcoal group-hover:text-rose mb-2 transition-colors">Average Maryland Wedding Cost</h3>
+          <p class="text-sm text-charcoal-muted font-body">Real 2026 data on what Maryland weddings cost and how to stay under $20,000.</p>
+        </a>
+      </div>
+
+      <div class="bg-[#C89481] rounded-2xl p-10 md:p-14 text-center">
+        <h2 class="font-display text-3xl font-bold text-white mb-4">Ready to Book a Free Consultation?</h2>
+        <p class="text-white/80 font-body mb-8 max-w-xl mx-auto">
+          Tell John where you are in the planning process, your wedding date, and your budget. He'll recommend the right package and give you a real quote. No pressure, no commitment.
+        </p>
+        <a href="/contact" class="btn-white text-base px-8 py-4">Book My Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</Layout>
