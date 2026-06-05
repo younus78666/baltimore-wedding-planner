@@ -46,10 +46,17 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: "How much does a wedding planner cost in Baltimore?", a: "John's packages start at $500 for day-of coordination and go up to $2,800 for full-service planning. All packages are designed for Maryland weddings with budgets under $20,000. <a href='/wedding-planning-packages' class='text-[#C89481] hover:underline'>See full pricing here</a>." },
+  { q: "How much does a wedding planner cost in Baltimore?", a: "John's packages start at $500 for day-of coordination and go up to $2,800 for full-service planning. All packages are designed for Maryland weddings with budgets under $20,000. <a href='/wedding-planning-packages' class='text-[#C89481] hover:underline font-medium'>See full pricing here</a>." },
   { q: "What areas of Maryland does John serve?", a: 'John serves all of Maryland: Baltimore, Annapolis, Columbia, Towson, Frederick, Rockville, Silver Spring, and the Eastern Shore.' },
-  { q: "What is the difference between full-service planning and day-of coordination?", a: "Full-service planning covers everything from engagement to reception over 6-18 months. Day-of coordination means John manages your wedding day timeline and vendors without prior planning involvement. <a href='/services/day-of-wedding-coordinator' class='text-[#C89481] hover:underline'>Learn about day-of coordination</a>." },
-  { q: "Do you plan elopements in Maryland?", a: "Yes. Elopements and micro-weddings (under 30 guests) are a specialty. John handles location scouting, permits, officiants, and vendor coordination. <a href='/services/elopement-planner-maryland' class='text-[#C89481] hover:underline'>See elopement packages</a>." },
+  { q: "What is the difference between full-service planning and day-of coordination?", a: "Full-service planning covers everything from engagement to reception over 6-18 months. Day-of coordination means John manages your wedding day timeline and vendors without prior planning involvement. <a href='/services/day-of-wedding-coordinator' class='text-[#C89481] hover:underline font-medium'>Learn about day-of coordination</a>." },
+  { q: "Do you plan elopements in Maryland?", a: "Yes. Elopements and micro-weddings (under 30 guests) are a specialty. John handles location scouting, permits, officiants, and vendor coordination. <a href='/services/elopement-planner-maryland' class='text-[#C89481] hover:underline font-medium'>See elopement packages</a>." },
+];
+
+const values = [
+  { title: 'Budget Honesty', desc: "Every dollar justified before it's committed. No hidden fees, no vendor kickbacks." },
+  { title: 'Maryland Expertise', desc: '50+ weddings across Baltimore, Annapolis, the Eastern Shore, and Western Maryland.' },
+  { title: 'Permit Specialists', desc: 'Instant support filing county marriage licenses and state park pavilion permits.' },
+  { title: 'Stress-Free Process', desc: 'Over 50 successful ceremonies managed with absolute day-of peace of mind.' },
 ];
 ---
 
@@ -60,129 +67,208 @@ const faqs = [
   schema={[schema, faqSchema]}
 >
 
-<!-- HERO — 12-col grid matching Google AI Studio design -->
-<section class="relative px-4 sm:px-6 lg:px-8 py-14 md:py-24 max-w-7xl mx-auto overflow-hidden">
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- ===== SCROLL REVEAL SCRIPT ===== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
 
-    <!-- Left 7 cols: headline, trust badges, CTAs -->
-    <div class="lg:col-span-7 flex flex-col items-start gap-6">
-      <div class="inline-flex items-center gap-1.5 bg-[#FAF1EE] text-[#915B49] text-[10px] tracking-widest font-bold uppercase rounded-lg px-3.5 py-1.5 border border-[#C89481]/15">
-        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-        Serving All of Maryland
-      </div>
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach((el) => {
+      observer.observe(el);
+    });
+  });
+</script>
 
-      <h1 class="font-display font-medium text-stone-900 tracking-tight text-4xl sm:text-5xl lg:text-6xl leading-[1.1]">
-        Baltimore's Wedding Planner for Couples Who Want
-        <span class="font-serif italic text-[#C89481] block mt-1">Beauty Without the Debt</span>
-      </h1>
-
-      <p class="text-stone-600 font-light text-base sm:text-lg max-w-xl leading-relaxed">
-        John creates stunning, boutique-quality weddings for Maryland couples with smart budgets under $20,000. Full-service planning, day-of coordination, and elopements handled with exquisite care.
-      </p>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-5 bg-white/50 p-4 border border-stone-200/50 rounded-2xl w-full max-w-xl">
-        <div class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-amber-500 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <span class="text-[11px] font-semibold text-stone-800">5-Star Google Rated</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#915B49]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          <span class="text-[11px] font-semibold text-stone-800">50+ MD Weddings</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#915B49]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span class="text-[11px] font-semibold text-stone-800">No Hidden Fees</span>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto pt-2">
-        <a href="/contact" class="bg-[#C89481] text-white hover:bg-[#B5826F] px-8 py-4 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md text-center hover:-translate-y-0.5">
-          Book Free Consultation
-        </a>
-        <a href="/wedding-planning-packages" class="bg-white border border-stone-200 hover:border-stone-300 text-stone-700 hover:bg-stone-50 px-8 py-4 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all text-center hover:-translate-y-0.5">
-          View All Packages
-        </a>
-      </div>
-    </div>
-
-    <!-- Right 5 cols: image + floating testimonial -->
-    <div class="lg:col-span-5 relative flex justify-center">
-      <div class="relative rounded-[2.5rem] overflow-hidden aspect-[3/4] w-full max-w-sm sm:max-w-md shadow-xl bg-stone-100 border-4 border-white hover:scale-[1.01] transition-all duration-500">
-        <div class="w-full h-full bg-[#FAF1EE] flex flex-col items-center justify-center">
-          <svg class="w-24 h-24 text-[#C89481] opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          <p class="text-xs text-[#C89481] opacity-30 mt-2">Wedding hero photo, replace with real image</p>
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent opacity-60 pointer-events-none" aria-hidden="true" />
-      </div>
-      <div class="absolute -bottom-6 -left-4 md:-left-8 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-stone-200/65 max-w-[270px] space-y-1 text-left z-10">
-        <div class="flex gap-0.5 text-amber-500 mb-1" aria-label="5 stars">
-          {[1,2,3,4,5].map(() => (
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          ))}
-        </div>
-        <p class="text-stone-800 text-[11px] leading-relaxed italic font-light">"Working with John was the absolute best choice we made."</p>
-        <p class="text-[#C89481] text-[10px] uppercase tracking-widest font-bold pt-1">— Sarah & Marcus, Baltimore</p>
-      </div>
-    </div>
+<!-- ===== HERO SECTION — Modern 2026 Design ===== -->
+<section class="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-[#FAF7F5] via-[#FAF1EE] to-[#FAF7F5]">
+  <!-- Animated ambient background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-[#C89481]/10 to-[#915B49]/5 rounded-full blur-[120px] animate-float-slow" />
+    <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-[#E4C5B7]/15 to-[#C89481]/5 rounded-full blur-[100px] animate-float" style="animation-delay: -3s" />
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#FAF1EE]/80 rounded-full blur-[150px]" />
   </div>
 
-  <!-- Social proof strip (as featured in) -->
-  <div class="mt-16 pt-8 border-t border-stone-200/60">
-    <p class="text-center font-sans uppercase tracking-[0.2em] text-[10px] font-bold text-stone-500 mb-6">Maryland Wedding Expertise: As Featured In</p>
-    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 opacity-60 grayscale hover:grayscale-0 hover:opacity-80 transition-all duration-500">
-      <span class="font-serif font-extrabold text-base tracking-tight text-stone-600 select-none">The Baltimore Sun</span>
-      <span class="font-sans font-bold text-lg tracking-widest uppercase text-stone-600 select-none">THE KNOT</span>
-      <span class="font-serif italic text-lg font-bold text-stone-600 select-none">Chesapeake Style</span>
-      <span class="font-sans font-extrabold text-base tracking-tight text-stone-600 select-none">WeddingWire <span class="text-stone-400 font-light">MD</span></span>
-      <span class="font-serif text-base tracking-widest uppercase text-stone-600 select-none">ANNAPOLIS BRIDE</span>
+  <!-- Subtle grid pattern overlay -->
+  <div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, #1C1816 1px, transparent 0); background-size: 40px 40px;" aria-hidden="true" />
+
+  <div class="relative w-full px-4 sm:px-6 lg:px-8 py-20 md:py-32 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      <!-- Left 7 cols: headline, trust badges, CTAs -->
+      <div class="lg:col-span-7 flex flex-col items-start gap-7 reveal-left">
+        <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md text-[#915B49] text-[10px] tracking-widest font-extrabold uppercase rounded-full px-4 py-2 border border-[#C89481]/20 shadow-sm">
+          <span class="flex h-2 w-2 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C89481] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#C89481]"></span>
+          </span>
+          Serving All of Maryland
+        </div>
+
+        <h1 class="font-display font-semibold text-stone-900 tracking-tight text-[clamp(2.25rem,5vw,4rem)] leading-[1.08] max-w-2xl">
+          Baltimore's Wedding Planner for Couples Who Want
+          <span class="font-serif italic bg-gradient-to-r from-[#C89481] via-[#915B49] to-[#C89481] bg-clip-text text-transparent block mt-2">Beauty Without the Debt</span>
+        </h1>
+
+        <p class="text-stone-600 font-light text-base sm:text-lg max-w-xl leading-relaxed">
+          John creates stunning, boutique-quality weddings for Maryland couples with smart budgets under $20,000. Full-service planning, day-of coordination, and elopements handled with exquisite care.
+        </p>
+
+        <!-- Trust badges — glass card -->
+        <div class="card-glass w-full max-w-xl p-5 stagger-children">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-5">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-amber-500 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <span class="text-[11px] font-semibold text-stone-800 leading-tight">5-Star Google<br />Rated</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-[#FAF1EE] flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-[#915B49]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <span class="text-[11px] font-semibold text-stone-800 leading-tight">50+ MD<br />Weddings</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <span class="text-[11px] font-semibold text-stone-800 leading-tight">No Hidden<br />Fees</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
+          <a href="/contact" class="bg-[#C89481] text-white hover:bg-[#B5826F] px-8 py-4 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md text-center hover:-translate-y-1 hover:shadow-lg active:translate-y-0 btn-lift">
+            Book Free Consultation
+          </a>
+          <a href="/wedding-planning-packages" class="group bg-white border-2 border-stone-200 hover:border-[#C89481]/40 text-stone-700 hover:text-[#915B49] px-8 py-4 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 text-center hover:-translate-y-1 hover:shadow-md active:translate-y-0 flex items-center justify-center gap-2">
+            View All Packages
+            <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right 5 cols: hero visual + floating testimonial -->
+      <div class="lg:col-span-5 relative flex justify-center reveal-right">
+        <!-- Main hero visual -->
+        <div class="relative w-full max-w-sm sm:max-w-md">
+          <!-- Glow behind image -->
+          <div class="absolute -inset-8 bg-gradient-to-br from-[#C89481]/20 via-[#FAF1EE] to-[#C89481]/10 rounded-[3rem] blur-2xl animate-pulse-glow" aria-hidden="true" />
+
+          <!-- Image container -->
+          <div class="relative rounded-[2.5rem] overflow-hidden aspect-[3/4] w-full shadow-2xl bg-white/80 backdrop-blur-sm border-2 border-white/80 hover:scale-[1.02] transition-all duration-700 group">
+            <div class="w-full h-full relative">
+              <!-- Placeholder gradient background -->
+              <div class="absolute inset-0 bg-gradient-to-br from-[#FAF1EE] via-[#FDF5F1] to-[#FAF1EE] img-shimmer" />
+              <!-- Decorative rings -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-48 h-48 rounded-full border-2 border-[#C89481]/10" />
+                <div class="absolute w-36 h-36 rounded-full border-[1.5px] border-[#C89481]/15" />
+                <div class="absolute w-24 h-24 rounded-full border-[1px] border-[#C89481]/20" />
+              </div>
+              <!-- Heart icon -->
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="w-20 h-20 text-[#C89481]/20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+              </div>
+              <p class="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-[#C89481]/40 font-mono">Replace with real photo</p>
+            </div>
+            <!-- Gradient overlay at bottom -->
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/30 via-transparent to-transparent opacity-50 pointer-events-none" aria-hidden="true" />
+          </div>
+
+          <!-- Floating testimonial card -->
+          <div class="absolute -bottom-6 -left-4 md:-left-8 bg-white/90 backdrop-blur-xl p-5 rounded-2xl shadow-xl border border-white/80 max-w-[280px] space-y-1.5 z-10 hover:-translate-y-1 hover:shadow-2xl transition-all duration-500">
+            <div class="flex gap-0.5 text-amber-400 mb-1" aria-label="5 stars">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              ))}
+            </div>
+            <p class="text-stone-700 text-[11px] leading-relaxed italic font-light">"Working with John was the absolute best choice we made."</p>
+            <p class="text-[#C89481] text-[10px] uppercase tracking-widest font-bold pt-0.5">— Sarah & Marcus, Baltimore</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- "As Featured In" social proof strip -->
+    <div class="mt-20 pt-10 border-t border-[#C89481]/10 reveal">
+      <p class="text-center font-sans uppercase tracking-[0.25em] text-[10px] font-bold text-stone-400 mb-8">As Featured In</p>
+      <div class="flex flex-wrap justify-center items-center gap-x-14 gap-y-6 opacity-50 hover:opacity-80 transition-all duration-700">
+        <span class="font-serif font-extrabold text-sm tracking-tight text-stone-500 select-none hover:text-[#915B49] transition-colors duration-300">The Baltimore Sun</span>
+        <span class="font-sans font-bold text-base tracking-widest uppercase text-stone-500 select-none hover:text-[#915B49] transition-colors duration-300">THE KNOT</span>
+        <span class="font-serif italic text-base font-bold text-stone-500 select-none hover:text-[#915B49] transition-colors duration-300">Chesapeake Style</span>
+        <span class="font-sans font-extrabold text-sm tracking-tight text-stone-500 select-none hover:text-[#915B49] transition-colors duration-300">WeddingWire <span class="text-stone-400 font-light">MD</span></span>
+        <span class="font-serif text-sm tracking-widest uppercase text-stone-500 select-none hover:text-[#915B49] transition-colors duration-300">ANNAPOLIS BRIDE</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR — white bg, 3 cols with dividers -->
-<section class="bg-white border-y border-stone-200/50 py-10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-stone-200/60 text-center">
-    <div class="flex flex-col items-center justify-center py-2 md:py-0">
-      <span class="font-display font-bold text-4xl lg:text-5xl text-stone-900 tracking-tight">50+</span>
-      <span class="text-stone-500 font-sans text-[11px] font-semibold uppercase tracking-widest mt-1">Maryland Weddings</span>
-    </div>
-    <div class="flex flex-col items-center justify-center py-4 md:py-0">
-      <span class="font-display font-bold text-4xl lg:text-5xl text-stone-900 tracking-tight">All MD</span>
-      <span class="text-stone-500 font-sans text-[11px] font-semibold uppercase tracking-widest mt-1">Service Area</span>
-    </div>
-    <div class="flex flex-col items-center justify-center py-2 md:py-0">
-      <span class="font-display font-bold text-4xl lg:text-5xl text-stone-900 tracking-tight">$0</span>
-      <span class="text-stone-500 font-sans text-[11px] font-semibold uppercase tracking-widest mt-1">Consultation Fee</span>
+<!-- ===== STATS BAR — Animated Counter Section ===== -->
+<section class="relative bg-gradient-to-r from-[#1C1816] to-[#2D2522] py-14 md:py-16 overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 30px 30px;" aria-hidden="true" />
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10 text-center stagger-children">
+      <div class="flex flex-col items-center justify-center py-4 md:py-0">
+        <span class="font-display font-bold text-5xl lg:text-6xl text-white tracking-tight reveal" style="will-change: transform;">50+</span>
+        <span class="text-stone-400 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] mt-2">Maryland Weddings</span>
+      </div>
+      <div class="flex flex-col items-center justify-center py-4 md:py-0">
+        <span class="font-display font-bold text-5xl lg:text-6xl text-white tracking-tight reveal" style="will-change: transform;">All MD</span>
+        <span class="text-stone-400 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] mt-2">Service Area</span>
+      </div>
+      <div class="flex flex-col items-center justify-center py-4 md:py-0">
+        <span class="font-display font-bold text-5xl lg:text-6xl text-white tracking-tight reveal" style="will-change: transform;">$0</span>
+        <span class="text-stone-400 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] mt-2">Consultation Fee</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES — 4-col rounded-[2rem] cards (exact App.tsx design) -->
-<section class="px-4 sm:px-6 lg:px-8 py-16 md:py-24 max-w-7xl mx-auto space-y-12" id="services-section">
-  <div class="text-center max-w-3xl mx-auto space-y-4">
-    <span class="text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-[#FAF1EE] px-4 py-1.5 rounded-full border border-[#C89481]/25 inline-block">PLANS & PRICING</span>
-    <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">Bespoke Services Configured For Your Budget</h2>
+<!-- ===== SERVICES — Bento-inspired Grid ===== -->
+<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 max-w-7xl mx-auto" id="services-section">
+  <div class="text-center max-w-3xl mx-auto space-y-5 reveal">
+    <span class="inline-flex items-center gap-2 text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#C89481]/25 shadow-sm">PLANS & PRICING</span>
+    <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Bespoke Services Configured For Your Budget</h2>
     <p class="text-stone-600 font-light text-sm md:text-base leading-relaxed max-w-2xl mx-auto">Choose full-service blueprints, day-of management, or elopement coordination. John adjusts every structure to protect your budget limit.</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 stagger-children">
     {services.map((svc) => (
-      <div class={`bg-white border rounded-[2rem] p-6 sm:p-8 flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden ${svc.featured ? 'border-[#C89481] ring-1 ring-[#C89481]/30' : 'border-stone-200 hover:border-[#C89481]/40'}`}>
-        <div class="space-y-5">
-          <div class="flex justify-between items-center">
-            <div class={`p-3 rounded-2xl transition duration-300 group-hover:scale-110 shadow-sm ${svc.iconIdx === 0 ? 'bg-[#FAF1EE] text-[#915B49] border border-[#C89481]/30' : svc.iconIdx === 1 ? 'bg-stone-100 text-stone-800' : svc.iconIdx === 2 ? 'bg-amber-50 text-amber-900 border border-amber-200/50' : 'bg-emerald-50 text-emerald-900 border border-emerald-200/50'}`}>
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                {svc.iconIdx === 0 && <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />}
-                {svc.iconIdx === 1 && <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />}
-                {svc.iconIdx === 2 && <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />}
-                {svc.iconIdx === 3 && <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />}
-              </svg>
-            </div>
-            {svc.featured && <span class="text-[9px] font-extrabold uppercase tracking-widest bg-[#915B49] text-white px-2.5 py-1 rounded-md">Most Popular</span>}
+      <div class={`card-glass group relative flex flex-col justify-between p-7 sm:p-8 bento-item ${svc.featured ? 'ring-2 ring-[#C89481]/40 shadow-lg shadow-[#C89481]/5' : ''}`}>
+        <!-- Featured badge -->
+        {svc.featured && (
+          <div class="absolute top-0 right-0">
+            <div class="bg-gradient-to-r from-[#915B49] to-[#C89481] text-white text-[8px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-bl-xl rounded-tr-[calc(1.5rem-1px)] shadow-md">Most Popular</div>
           </div>
-          <h3 class="font-display font-semibold text-lg text-stone-900 group-hover:text-[#915B49] transition duration-300">{svc.title}</h3>
+        )}
+        <div class="space-y-5">
+          <div class={`w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm ${
+            svc.iconIdx === 0 ? 'bg-gradient-to-br from-[#FAF1EE] to-[#FDF5F1] text-[#915B49] border border-[#C89481]/20' : 
+            svc.iconIdx === 1 ? 'bg-gradient-to-br from-stone-50 to-stone-100 text-stone-700 border border-stone-200/50' : 
+            svc.iconIdx === 2 ? 'bg-gradient-to-br from-amber-50 to-amber-100 text-amber-800 border border-amber-200/50' : 
+            'bg-gradient-to-br from-emerald-50 to-emerald-100 text-emerald-800 border border-emerald-200/50'
+          }`}>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              {svc.iconIdx === 0 && <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />}
+              {svc.iconIdx === 1 && <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />}
+              {svc.iconIdx === 2 && <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />}
+              {svc.iconIdx === 3 && <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />}
+            </svg>
+          </div>
+          <h3 class="font-display font-semibold text-lg text-stone-900 group-hover:text-[#915B49] transition-colors duration-300">{svc.title}</h3>
           <p class="text-stone-600 font-light text-xs leading-relaxed">{svc.desc}</p>
-          <hr class="border-stone-100" />
+          <div class="h-px bg-gradient-to-r from-stone-200 via-stone-100 to-transparent" />
           <ul class="space-y-2.5 text-[11px] text-stone-700 font-light">
             {svc.features.map((f) => (
               <li class="flex gap-2.5 items-start">
@@ -192,204 +278,265 @@ const faqs = [
             ))}
           </ul>
         </div>
-        <a href={svc.href} class="w-full bg-[#FAF1EE] text-[#915B49] hover:bg-[#C89481] hover:text-white font-sans text-xs font-bold py-3.5 rounded-xl transition duration-300 mt-6 border border-[#C89481]/15 uppercase tracking-wide text-center block">
+        <a href={svc.href} class="group/btn w-full bg-[#FAF1EE] text-[#915B49] hover:bg-gradient-to-r hover:from-[#C89481] hover:to-[#B5826F] hover:text-white font-sans text-xs font-bold py-3.5 rounded-xl transition-all duration-300 mt-6 border border-[#C89481]/15 uppercase tracking-wide text-center block hover:-translate-y-0.5 hover:shadow-md active:translate-y-0">
           Learn More
         </a>
       </div>
     ))}
   </div>
-  <div class="text-center pt-2">
-    <a href="/wedding-planning-packages" class="inline-flex items-center gap-2 bg-[#FAF1EE] border border-[#C89481]/15 text-[#915B49] hover:bg-[#C89481] hover:text-white px-7 py-3.5 rounded-xl text-xs font-bold tracking-wider uppercase transition shadow-sm">
+  <div class="text-center mt-10 reveal">
+    <a href="/wedding-planning-packages" class="group inline-flex items-center gap-2 bg-[#1C1816] text-white hover:bg-[#3D3430] px-7 py-3.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:-translate-y-0.5 active:translate-y-0">
       Compare All Packages
-      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
     </a>
   </div>
 </section>
 
-<!-- VENUE GUIDES — Quality Nodes 2-col -->
-<section class="px-4 sm:px-6 lg:px-8 py-16 md:py-20 bg-stone-50 border-y border-stone-200/50">
-  <div class="max-w-7xl mx-auto space-y-10">
-    <div class="text-center space-y-3">
-      <span class="text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-[#FAF1EE] px-4 py-1.5 rounded-full border border-[#C89481]/25 inline-block">FREE RESOURCES</span>
-      <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">Maryland Wedding Planning Guides</h2>
+<!-- ===== VENUE GUIDES — 2-col Bento ===== -->
+<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 bg-gradient-to-b from-stone-50 to-white border-y border-stone-200/40">
+  <div class="max-w-7xl mx-auto space-y-12">
+    <div class="text-center space-y-4 reveal">
+      <span class="inline-flex items-center gap-2 text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#C89481]/25 shadow-sm">FREE RESOURCES</span>
+      <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-stone-900">Maryland Wedding Planning Guides</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <a href="/blog/baltimore-wedding-venues" class="bg-white border border-stone-200/80 rounded-[2rem] overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-        <div class="h-52 bg-[#FAF1EE] flex items-center justify-center">
-          <svg class="w-16 h-16 text-[#C89481] opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-children">
+      <a href="/blog/baltimore-wedding-venues" class="group bg-white border border-stone-200/80 rounded-[2rem] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 bento-item">
+        <div class="h-56 bg-gradient-to-br from-[#FAF1EE] to-[#FDF5F1] flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#C89481]/5 via-transparent to-[#915B49]/5" />
+          <svg class="w-20 h-20 text-[#C89481]/20 group-hover:scale-110 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
         </div>
-        <div class="p-7">
-          <span class="text-[9px] font-bold uppercase tracking-widest text-[#915B49] bg-[#FAF1EE] px-2.5 py-1 rounded-full border border-[#C89481]/20">Venue Guide</span>
-          <h3 class="font-display text-xl font-semibold text-stone-900 mt-4 mb-2 group-hover:text-[#915B49] transition">Best Baltimore Wedding Venues for Every Budget in 2026</h3>
+        <div class="p-8">
+          <span class="text-[9px] font-extrabold uppercase tracking-widest text-[#915B49] bg-[#FAF1EE] px-3 py-1.5 rounded-full border border-[#C89481]/20">Venue Guide</span>
+          <h3 class="font-display text-xl font-semibold text-stone-900 mt-4 mb-3 group-hover:text-[#915B49] transition-colors">Best Baltimore Wedding Venues for Every Budget in 2026</h3>
           <p class="text-stone-500 text-xs font-light leading-relaxed">Industrial lofts, historic mansions, waterfront spaces, and public parks. Real 2026 pricing reviewed by a local planner.</p>
-          <span class="text-[#C89481] text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1 mt-4">Read Guide <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg></span>
+          <span class="text-[#C89481] text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 mt-5 group-hover:gap-2.5 transition-all">Read Guide <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg></span>
         </div>
       </a>
-      <a href="/blog/wedding-venues-in-maryland" class="bg-white border border-stone-200/80 rounded-[2rem] overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-        <div class="h-52 bg-stone-100 flex items-center justify-center">
-          <svg class="w-16 h-16 text-stone-400 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+      <a href="/blog/wedding-venues-in-maryland" class="group bg-white border border-stone-200/80 rounded-[2rem] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 bento-item">
+        <div class="h-56 bg-gradient-to-br from-stone-50 to-stone-100 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-stone-200/10 via-transparent to-stone-300/10" />
+          <svg class="w-20 h-20 text-stone-400/25 group-hover:scale-110 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
         </div>
-        <div class="p-7">
-          <span class="text-[9px] font-bold uppercase tracking-widest text-stone-600 bg-stone-100 px-2.5 py-1 rounded-full border border-stone-300/50">Statewide Guide</span>
-          <h3 class="font-display text-xl font-semibold text-stone-900 mt-4 mb-2 group-hover:text-[#915B49] transition">Best Wedding Venues in Maryland: Complete 2026 Guide</h3>
+        <div class="p-8">
+          <span class="text-[9px] font-extrabold uppercase tracking-widest text-stone-600 bg-stone-100 px-3 py-1.5 rounded-full border border-stone-300/50">Statewide Guide</span>
+          <h3 class="font-display text-xl font-semibold text-stone-900 mt-4 mb-3 group-hover:text-[#915B49] transition-colors">Best Wedding Venues in Maryland: Complete 2026 Guide</h3>
           <p class="text-stone-500 text-xs font-light leading-relaxed">25+ Maryland wedding venues by region: Baltimore, Annapolis, Eastern Shore, DC suburbs. Real pricing from a local planner.</p>
-          <span class="text-[#C89481] text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1 mt-4">Read Guide <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg></span>
+          <span class="text-[#C89481] text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 mt-5 group-hover:gap-2.5 transition-all">Read Guide <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg></span>
         </div>
       </a>
     </div>
-    <div class="text-center">
-      <a href="/blog" class="inline-flex items-center gap-2 border border-stone-200 text-stone-700 bg-white hover:bg-stone-50 px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-sm">View All Guides</a>
+    <div class="text-center reveal">
+      <a href="/blog" class="group inline-flex items-center gap-2 bg-white border-2 border-stone-200 hover:border-[#C89481]/30 hover:bg-[#FAF1EE] hover:text-[#915B49] text-stone-700 px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
+        View All Guides
+        <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- TIMELINE — 3 step cards -->
-<section class="px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-stone-50 border-b border-stone-200/50">
-  <div class="max-w-7xl mx-auto space-y-12">
-    <div class="text-center max-w-xl mx-auto space-y-3">
-      <h2 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 tracking-tight">Planning Your Maryland Wedding with John is Simple</h2>
-      <p class="text-stone-600 font-light text-xs md:text-sm leading-relaxed">Three clear steps from first call to perfect day.</p>
+<!-- ===== TIMELINE — 3-step Process ===== -->
+<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 bg-gradient-to-b from-white to-stone-50 border-b border-stone-200/40">
+  <div class="max-w-7xl mx-auto space-y-14">
+    <div class="text-center max-w-xl mx-auto space-y-4 reveal">
+      <span class="inline-flex items-center gap-2 text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#C89481]/25 shadow-sm">HOW IT WORKS</span>
+      <h2 class="font-display text-3xl md:text-5xl font-semibold text-stone-900 tracking-tight leading-tight">Planning Your Maryland Wedding with John is Simple</h2>
+      <p class="text-stone-600 font-light text-sm md:text-base leading-relaxed">Three clear steps from first call to perfect day.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-      <div class="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-[#C89481]/20 z-0" aria-hidden="true" />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative stagger-children">
+      <!-- Connector line (desktop) -->
+      <div class="hidden md:block absolute top-16 left-[16.67%] right-[16.67%] h-[2px] bg-gradient-to-r from-[#C89481]/40 via-[#915B49]/30 to-[#C89481]/40 z-0" aria-hidden="true" />
+
       {steps.map((step, i) => (
-        <div class={`p-6 md:p-8 rounded-3xl bg-white border hover:border-[#C89481] hover:shadow-md transition-all duration-300 relative z-10 flex flex-col items-center text-center space-y-4 ${i === 0 ? 'border-[#C89481] shadow-md ring-1 ring-[#C89481]/15' : 'border-stone-200'}`}>
-          <div class={`w-14 h-14 rounded-full flex items-center justify-center font-display font-semibold text-lg transition-all duration-300 ${i === 0 ? 'bg-[#915B49] text-white' : 'bg-stone-100 text-stone-600'}`}>{step.n}</div>
-          <div class="space-y-1.5">
-            <h3 class="font-display font-semibold text-stone-950 text-base">{step.title}</h3>
-            <p class="text-stone-500 text-xs font-light leading-relaxed">{step.desc}</p>
+        <div class={`relative z-10 flex flex-col items-center text-center space-y-5 p-8 rounded-[2rem] transition-all duration-500 bento-item ${
+          i === 0 
+            ? 'bg-gradient-to-b from-white to-[#FAF1EE]/30 border-2 border-[#C89481]/30 shadow-xl shadow-[#C89481]/5' 
+            : 'bg-white/70 backdrop-blur-sm border border-stone-200/70 hover:border-[#C89481]/30 hover:shadow-lg'
+        }`}>
+          <div class={`w-16 h-16 rounded-full flex items-center justify-center font-display font-bold text-xl transition-all duration-500 ${
+            i === 0 
+              ? 'bg-gradient-to-br from-[#915B49] to-[#C89481] text-white shadow-lg shadow-[#915B49]/20' 
+              : 'bg-stone-100 text-stone-600 group-hover:bg-gradient-to-br group-hover:from-[#915B49] group-hover:to-[#C89481] group-hover:text-white'
+          }`}>{step.n}</div>
+          <div class="space-y-2">
+            <h3 class="font-display font-semibold text-stone-950 text-lg">{step.title}</h3>
+            <p class="text-stone-500 text-xs font-light leading-relaxed max-w-xs">{step.desc}</p>
           </div>
-          {i === 0 && <div class="text-[10px] text-[#915B49] font-bold uppercase tracking-widest pt-2 bg-[#FAF1EE] px-3 py-1 rounded-full">Start Here</div>}
+          {i === 0 && (
+            <div class="text-[9px] text-white font-bold uppercase tracking-widest bg-gradient-to-r from-[#915B49] to-[#C89481] px-4 py-1.5 rounded-full shadow-sm">Start Here</div>
+          )}
         </div>
       ))}
     </div>
-    <div class="text-center pt-4">
-      <a href="/contact" class="bg-[#C89481] hover:bg-[#B5826F] text-white px-8 py-3.5 rounded-xl font-display text-xs font-semibold tracking-wider uppercase transition shadow-md inline-block">
+
+    <div class="text-center reveal">
+      <a href="/contact" class="group bg-gradient-to-r from-[#915B49] to-[#C89481] hover:from-[#B5826F] hover:to-[#915B49] text-white px-10 py-4 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 active:translate-y-0 inline-flex items-center gap-2.5">
         Start With a Free Consultation
+        <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ABOUT JOHN — portrait col + value props grid -->
-<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 max-w-7xl mx-auto overflow-hidden">
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
-    <div class="md:col-span-5 relative flex justify-center">
-      <div class="relative w-full max-w-sm aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-[#FAF1EE] shadow-xl border-4 border-white hover:scale-[1.01] transition-transform duration-500">
-        <div class="w-full h-full flex flex-col items-center justify-center">
-          <svg class="w-20 h-20 text-[#C89481] opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-          <p class="text-xs text-[#C89481] opacity-30 mt-2">John's headshot</p>
+<!-- ===== ABOUT JOHN — Split Layout with Glass Effects ===== -->
+<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-32 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-14 lg:gap-20 items-center">
+    <!-- Portrait column -->
+    <div class="md:col-span-5 relative flex justify-center reveal-left">
+      <div class="relative w-full max-w-sm">
+        <!-- Glow ring -->
+        <div class="absolute -inset-4 bg-gradient-to-br from-[#C89481]/20 via-[#FAF1EE] to-[#C89481]/10 rounded-[3rem] blur-2xl" aria-hidden="true" />
+        <!-- Image container -->
+        <div class="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#FAF1EE] to-[#FDF5F1] shadow-2xl border-2 border-white/80 hover:scale-[1.01] transition-transform duration-700 group">
+          <div class="w-full h-full relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-24 h-24 text-[#C89481]/15 group-hover:scale-110 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.75" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+            </div>
+            <p class="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-[#C89481]/40 font-mono">John's headshot</p>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/40 via-transparent to-transparent opacity-60 pointer-events-none" aria-hidden="true" />
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-stone-950/50 via-transparent to-transparent opacity-80" aria-hidden="true" />
-      </div>
-      <div class="absolute bottom-6 left-6 right-6 bg-stone-950/95 backdrop-blur-md text-white py-3 px-4 rounded-2xl shadow-lg border border-stone-800/80 flex justify-between items-center">
-        <div>
-          <p class="font-mono text-[9px] text-stone-500 uppercase tracking-widest font-bold">Maryland Planner</p>
-          <p class="text-xs font-serif font-bold text-[#C89481]">Budget Wedding Studio</p>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-4 -right-4 bg-white/90 backdrop-blur-xl text-stone-900 py-3.5 px-5 rounded-2xl shadow-xl border border-white/80 flex items-center gap-3 hover:-translate-y-1 transition-all duration-500">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C89481] to-[#915B49] flex items-center justify-center text-white font-bold text-lg shadow-md">J</div>
+          <div class="text-left">
+            <p class="font-mono text-[8px] text-stone-500 uppercase tracking-widest font-bold">Lead Planner</p>
+            <p class="text-xs font-serif font-bold text-[#915B49]">50+ Weddings</p>
+          </div>
         </div>
-        <span class="text-[10px] uppercase font-mono tracking-wider font-extrabold text-[#C89481] bg-[#C89481]/15 px-2.5 py-1 rounded-md border border-[#C89481]/20">50+ Done</span>
       </div>
     </div>
-    <div class="md:col-span-7 space-y-6">
-      <span class="inline-flex items-center gap-1.5 bg-[#FAF1EE] text-[#915B49] text-[10px] tracking-[0.2em] font-sans font-extrabold uppercase rounded-lg px-3.5 py-1.5 border border-[#C89481]/15">WHY CHOOSE JOHN</span>
-      <h2 class="font-display font-medium text-3xl md:text-4xl text-stone-900 leading-tight">A Gorgeous Maryland Wedding Within Realistic Means</h2>
-      <p class="text-stone-600 font-light text-sm sm:text-base leading-relaxed">Based in Baltimore, John knows every venue, permit specialist, and highly discounted local vendor across the state. His process removes planning noise and guarantees real savings.</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-        {[
-          { title: 'Budget Honesty', desc: "Every dollar justified before it's committed. No hidden fees, no vendor kickbacks." },
-          { title: 'Maryland Expertise', desc: '50+ weddings across Baltimore, Annapolis, the Eastern Shore, and Western Maryland.' },
-          { title: 'Permit Specialists', desc: 'Instant support filing county marriage licenses and state park pavilion permits.' },
-          { title: 'Stress-Free Process', desc: 'Over 50 successful ceremonies managed with absolute day-of peace of mind.' },
-        ].map((v) => (
-          <div class="flex gap-3 items-start p-4 bg-white border border-stone-200/50 rounded-2xl">
-            <svg class="w-5 h-5 text-[#915B49] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+
+    <!-- Content column -->
+    <div class="md:col-span-7 space-y-7 reveal-right">
+      <span class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm text-[#915B49] text-[10px] tracking-[0.2em] font-sans font-extrabold uppercase rounded-full px-4 py-2 border border-[#C89481]/20 shadow-sm">WHY CHOOSE JOHN</span>
+      <h2 class="font-display font-semibold text-3xl md:text-5xl text-stone-900 leading-tight tracking-tight">A Gorgeous Maryland Wedding Within Realistic Means</h2>
+      <p class="text-stone-600 font-light text-sm sm:text-base leading-relaxed max-w-xl">Based in Baltimore, John knows every venue, permit specialist, and highly discounted local vendor across the state. His process removes planning noise and guarantees real savings.</p>
+
+      <!-- Value props — 2x2 grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 stagger-children">
+        {values.map((v) => (
+          <div class="card-glass flex gap-3.5 items-start p-5 hover:bg-white/80 hover:border-[#C89481]/20 transition-all duration-300">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FAF1EE] to-[#FDF5F1] flex items-center justify-center shrink-0 border border-[#C89481]/20 shadow-sm">
+              <svg class="w-4 h-4 text-[#915B49]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
             <div>
               <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-950">{v.title}</h4>
-              <p class="text-[11px] text-stone-500 font-light mt-1">{v.desc}</p>
+              <p class="text-[11px] text-stone-500 font-light mt-1 leading-relaxed">{v.desc}</p>
             </div>
           </div>
         ))}
       </div>
-      <blockquote class="italic font-serif text-stone-800 text-sm border-l-2 border-[#C89481] pl-4 max-w-xl">
-        "Starting your married life with heavy financial debt is entirely optional. I build breathtaking celebrations without the premium inflation."
-        <cite class="block text-xs font-sans font-bold text-[#C89481] not-italic uppercase tracking-wider mt-2">— John, Lead Planner</cite>
+
+      <blockquote class="relative pl-6 border-l-[3px] border-gradient-to-b from-[#C89481] to-[#915B49] py-2 max-w-xl">
+        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#C89481] to-[#915B49] rounded-full" aria-hidden="true" />
+        <p class="italic font-serif text-stone-700 text-sm leading-relaxed">"Starting your married life with heavy financial debt is entirely optional. I build breathtaking celebrations without the premium inflation."</p>
+        <cite class="block text-xs font-sans font-bold text-[#915B49] not-italic uppercase tracking-wider mt-3">— John, Lead Planner</cite>
       </blockquote>
-      <a href="/about" class="bg-[#C89481] text-white hover:bg-[#B5826F] px-8 py-3.5 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-sm inline-block">Meet John</a>
+
+      <a href="/about" class="group bg-gradient-to-r from-[#915B49] to-[#C89481] hover:from-[#B5826F] hover:to-[#915B49] text-white px-8 py-3.5 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 active:translate-y-0 inline-flex items-center gap-2.5">
+        Meet John
+        <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS — 3 rounded-[2rem] cards -->
-<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 max-w-7xl mx-auto space-y-12 bg-stone-50 border-y border-stone-200/50">
-  <div class="text-center max-w-2xl mx-auto space-y-4">
-    <span class="text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-[#FAF1EE] px-4 py-1.5 rounded-full border border-[#C89481]/25 inline-block">CLIENT LOVE LETTERS</span>
-    <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">Real Happiness from Real Maryland Couples</h2>
-    <p class="text-stone-600 font-light text-sm md:text-base leading-relaxed">Exquisite celebrations and stress-free timelines coordinated within realistic budgets.</p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    {testimonials.map((t) => (
-      <div class="bg-white border border-stone-200/90 p-8 rounded-[2rem] flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
-        <div class="space-y-5">
-          <div class="flex justify-between items-center">
-            <div class="flex gap-1 text-amber-500">
-              {[1,2,3,4,5].map(() => (
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              ))}
+<!-- ===== TESTIMONIALS — Carousel-style Cards ===== -->
+<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 bg-gradient-to-b from-stone-50 to-white border-y border-stone-200/40">
+  <div class="max-w-7xl mx-auto space-y-14">
+    <div class="text-center max-w-2xl mx-auto space-y-4 reveal">
+      <span class="inline-flex items-center gap-2 text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#C89481]/25 shadow-sm">CLIENT LOVE LETTERS</span>
+      <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-stone-900 leading-tight">Real Happiness from Real Maryland Couples</h2>
+      <p class="text-stone-600 font-light text-sm md:text-base leading-relaxed">Exquisite celebrations and stress-free timelines coordinated within realistic budgets.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
+      {testimonials.map((t) => (
+        <div class="card-glass p-8 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+          <div class="space-y-5">
+            <div class="flex justify-between items-start">
+              <div class="flex gap-1 text-amber-400">
+                {[1,2,3,4,5].map(() => (
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                ))}
+              </div>
+              <span class="font-serif text-6xl text-[#C89481]/8 leading-none select-none -mt-2" aria-hidden="true">"</span>
             </div>
-            <span class="font-serif text-5xl text-[#C89481]/10 select-none leading-none absolute right-6 top-4" aria-hidden="true">"</span>
+            <p class="text-stone-700 font-light text-sm leading-relaxed">"{t.quote}"</p>
           </div>
-          <p class="text-stone-700 font-light text-sm leading-relaxed italic relative z-10">"{t.quote}"</p>
+          <div class="pt-6 mt-6 border-t border-stone-100 flex items-center gap-4">
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#FAF1EE] to-[#FDF5F1] text-[#915B49] flex items-center justify-center font-display font-extrabold text-sm uppercase shadow-sm group-hover:bg-gradient-to-br group-hover:from-[#C89481] group-hover:to-[#915B49] group-hover:text-white transition-all duration-500" aria-hidden="true">
+              {t.name.charAt(0)}
+            </div>
+            <div>
+              <h4 class="font-sans font-bold text-stone-900 text-xs sm:text-sm">{t.name}</h4>
+              <p class="text-stone-500 text-[10.5px] mt-0.5">{t.location}</p>
+            </div>
+          </div>
         </div>
-        <div class="pt-6 border-t border-stone-100 mt-6 flex items-center gap-3.5">
-          <div class="w-10 h-10 bg-[#FAF1EE] text-[#915B49] rounded-xl flex items-center justify-center font-display font-extrabold text-sm uppercase shadow-sm group-hover:bg-[#C89481] group-hover:text-white transition duration-300" aria-hidden="true">
-            {t.name.charAt(0)}
-          </div>
-          <div>
-            <h4 class="font-sans font-bold text-stone-900 text-xs sm:text-sm">{t.name}</h4>
-            <p class="text-stone-500 text-[10.5px] mt-0.5">{t.location}</p>
-          </div>
-        </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
 </section>
 
-<!-- FAQ ACCORDION — rounded-[1.5rem] exact App.tsx match -->
-<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 max-w-4xl mx-auto space-y-12">
-  <div class="text-center space-y-4 max-w-2xl mx-auto">
-    <span class="text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-[#FAF1EE] px-4 py-1.5 rounded-full border border-[#C89481]/25 inline-block">YOUR QUESTIONS ANSWERED</span>
-    <h2 class="font-display text-3xl md:text-4xl font-semibold text-stone-900 tracking-tight">Common Questions About Maryland Budget Weddings</h2>
+<!-- ===== FAQ ACCORDION — Modern Interaction Design ===== -->
+<section class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 max-w-4xl mx-auto">
+  <div class="text-center space-y-4 max-w-2xl mx-auto reveal">
+    <span class="inline-flex items-center gap-2 text-[#915B49] text-[10px] tracking-[0.25em] font-sans font-extrabold uppercase bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#C89481]/25 shadow-sm">YOUR QUESTIONS ANSWERED</span>
+    <h2 class="font-display text-3xl md:text-5xl font-semibold text-stone-900 tracking-tight leading-tight">Common Questions About Maryland Budget Weddings</h2>
     <p class="text-stone-600 font-light text-sm md:text-base leading-relaxed">Everything you need to know about planning, permits, and coordinating your wedding.</p>
   </div>
-  <div class="space-y-4 max-w-3xl mx-auto">
+
+  <div class="space-y-4 max-w-3xl mx-auto mt-14 stagger-children">
     {faqs.map((faq, i) => (
-      <details class={`bg-white border rounded-[1.5rem] overflow-hidden transition-all duration-300 ${i === 0 ? 'border-[#C89481] shadow-md ring-1 ring-[#C89481]/15' : 'border-stone-200/90 shadow-sm hover:border-stone-300'}`} name="home-faq" open={i === 0}>
-        <summary class="w-full text-left px-6 py-5 sm:p-6 flex justify-between items-center group text-sm sm:text-base font-bold text-stone-900 hover:text-[#915B49] transition duration-200">
+      <details class={`bg-white/70 backdrop-blur-sm border rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-md ${
+        i === 0 ? 'border-[#C89481]/40 shadow-lg shadow-[#C89481]/5' : 'border-stone-200/80 hover:border-stone-300'
+      }`} name="home-faq" open={i === 0}>
+        <summary class="w-full text-left px-7 py-5 sm:p-6 flex justify-between items-center group cursor-pointer text-sm sm:text-base font-bold text-stone-900 hover:text-[#915B49] transition-all duration-200">
           <span class="pr-5 leading-normal">{faq.q}</span>
-          <span class={`shrink-0 p-2 rounded-xl transition duration-300 ${i === 0 ? 'bg-[#FAF1EE] text-[#915B49]' : 'bg-stone-50 text-stone-500 group-hover:bg-[#FAF1EE] group-hover:text-[#915B49]'}`}>
-            <svg class="faq-icon w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+          <span class={`shrink-0 p-2 rounded-xl transition-all duration-300 ${
+            i === 0 ? 'bg-[#C89481]/10 text-[#915B49]' : 'bg-stone-50 text-stone-500 group-hover:bg-[#FAF1EE] group-hover:text-[#915B49]'
+          }`}>
+            <svg class="faq-icon w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
           </span>
         </summary>
-        <div class="px-6 pb-6 pt-1 text-stone-600 text-xs sm:text-sm leading-relaxed font-light border-t border-stone-100" set:html={faq.a} />
+        <div class="px-7 pb-6 pt-2 text-stone-600 text-xs sm:text-sm leading-relaxed font-light border-t border-stone-100" set:html={faq.a} />
       </details>
     ))}
   </div>
-  <div class="text-center pt-2">
-    <a href="/faq" class="inline-flex items-center gap-2 border border-stone-200 hover:border-stone-300 text-stone-700 bg-white hover:bg-stone-50 px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm">See All FAQs</a>
+
+  <div class="text-center mt-10 reveal">
+    <a href="/faq" class="group inline-flex items-center gap-2 bg-white border-2 border-stone-200 hover:border-[#C89481]/30 hover:bg-[#FAF1EE] hover:text-[#915B49] text-stone-700 px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
+      See All FAQs
+      <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+    </a>
   </div>
 </section>
 
-<!-- BOTTOM CTA — #1C1816 dark bg with glowing circles (exact App.tsx match) -->
-<section class="relative px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center overflow-hidden bg-[#1C1816] text-white">
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#C89481]/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#915B49]/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
-  <div class="relative z-10 max-w-2xl mx-auto px-4 space-y-6">
-    <span class="text-[#C89481] text-[10px] tracking-[0.3em] font-mono font-bold uppercase bg-stone-900 border border-stone-800 px-4 py-1.5 rounded-full inline-block">START PLANNING TODAY</span>
-    <h2 class="font-display font-medium tracking-tight text-3xl sm:text-5xl leading-tight text-white">Ready to Plan Your Maryland Wedding with John?</h2>
-    <p class="text-stone-300 font-light text-sm sm:text-base leading-relaxed max-w-xl mx-auto">Book your free 30-minute consultation call. No pressure, no commitment, just transparent budget blueprints, custom permit timelines, and verified regional cost savings.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto pt-4">
-      <a href="/contact" class="bg-[#C89481] hover:bg-[#B5826F] text-white px-8 py-4 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md text-center hover:-translate-y-0.5">Book Free Consultation</a>
-      <a href="/wedding-planning-packages" class="bg-transparent border border-stone-700 hover:border-stone-500 text-stone-200 px-8 py-4 rounded-xl font-sans text-xs font-bold tracking-wider uppercase transition-all hover:bg-stone-900 text-center">Check All Packages</a>
+<!-- ===== BOTTOM CTA — Dark Bento with Glow Effects ===== -->
+<section class="relative px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center overflow-hidden bg-[#1C1816]">
+  <!-- Animated ambient glow orbs -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#C89481]/8 to-[#915B49]/5 rounded-full blur-[120px] animate-pulse-glow pointer-events-none" aria-hidden="true" />
+  <div class="absolute -top-40 -right-40 w-[450px] h-[450px] bg-[#915B49]/5 rounded-full blur-[100px] animate-float-slow pointer-events-none" style="animation-delay: -2s;" aria-hidden="true" />
+  <div class="absolute -bottom-40 -left-40 w-[450px] h-[450px] bg-[#C89481]/5 rounded-full blur-[100px] animate-float pointer-events-none" style="animation-delay: -4s;" aria-hidden="true" />
+
+  <!-- Subtle grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.5) 1px, transparent 0); background-size: 35px 35px;" aria-hidden="true" />
+
+  <div class="relative z-10 max-w-2xl mx-auto px-4 space-y-8 reveal">
+    <span class="inline-flex items-center gap-2 text-[#C89481] text-[10px] tracking-[0.3em] font-mono font-bold uppercase bg-white/5 border border-white/10 backdrop-blur-sm px-4 py-2 rounded-full">START PLANNING TODAY</span>
+    <h2 class="font-display font-semibold tracking-tight text-[clamp(2rem,4vw,3.5rem)] leading-tight text-white">Ready to Plan Your Maryland Wedding with John?</h2>
+    <p class="text-stone-400 font-light text-sm sm:text-base leading-relaxed max-w-xl mx-auto">Book your free 30-minute consultation call. No pressure, no commitment, just transparent budget blueprints, custom permit timelines, and verified regional cost savings.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto pt-4 stagger-children">
+      <a href="/contact" class="group bg-gradient-to-r from-[#C89481] to-[#B5826F] hover:from-[#B5826F] hover:to-[#915B49] text-white px-8 py-4 rounded-xl font-display text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 active:translate-y-0 inline-flex items-center justify-center gap-2.5">
+        Book Free Consultation
+        <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+      <a href="/wedding-planning-packages" class="group bg-transparent border-2 border-stone-700 hover:border-[#C89481]/50 text-stone-300 hover:text-white px-8 py-4 rounded-xl font-sans text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:bg-white/5 hover:-translate-y-1 active:translate-y-0 inline-flex items-center justify-center gap-2">
+        Check All Packages
+        <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
     </div>
   </div>
 </section>
