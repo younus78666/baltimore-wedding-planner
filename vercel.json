@@ -2,7 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "astro",
-  "installCommand": "npm install",
+  "installCommand": "NODE_OPTIONS=--use-system-ca npm install",
   "headers": [
     {
       "source": "/(.*)",
