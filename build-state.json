@@ -1,8 +1,8 @@
 {
   "project": "Baltimore Wedding Planner",
-  "version": "v5.0",
+  "version": "v5.1",
   "framework": "Astro 6 + Tailwind CSS",
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-06-05",
   "phases": {
     "phase-01-competitors": {
       "status": "partial",
@@ -17,28 +17,28 @@
       "missing": ["2.5-gap-analysis", "2.6-city-keywords"]
     },
     "phase-03-microniche": {
-      "status": "not-started",
-      "completion": 0,
-      "done": [],
-      "missing": ["3.1-sub-services", "3.2-competition-check", "3.3-hierarchy", "3.4-build-order", "3.5-validate"]
+      "status": "complete",
+      "completion": 100,
+      "done": ["3.1-sub-services", "3.2-competition-check", "3.3-hierarchy", "3.4-build-order", "3.5-validate"],
+      "missing": []
     },
     "phase-04-topicalmap": {
       "status": "partial",
-      "completion": 60,
-      "done": ["4.1-central-entity", "4.2-page-list", "4.4-internal-linking", "4.8-publication-calendar"],
-      "missing": ["4.0-data-intake-GSC", "4.3-intent-classification", "4.5-deep-content-briefs", "4.6-blog-briefs", "4.7-location-briefs", "4.9-GSC-cross-reference", "4.10-validate"]
+      "completion": 70,
+      "done": ["4.1-central-entity", "4.2-page-list", "4.4-internal-linking", "4.8-publication-calendar", "4.5-deep-content-briefs"],
+      "missing": ["4.0-data-intake-GSC", "4.3-intent-classification", "4.6-blog-briefs", "4.7-location-briefs", "4.9-GSC-cross-reference", "4.10-validate"]
     },
     "phase-05-content": {
-      "status": "not-started",
-      "completion": 0,
-      "done": [],
-      "missing": ["5.1-value-research", "5.2-tone-DNA", "5.3-service-pages", "5.4-micro-niche-pages", "5.5-blog-posts", "5.6-location-pages", "5.7-homepage", "5.8-about-contact-faq", "5.9-grammar-audit", "5.10-validate"]
+      "status": "partial",
+      "completion": 35,
+      "done": ["5.3-service-pages", "5.4-micro-niche-pages", "5.5-blog-posts"],
+      "missing": ["5.1-value-research", "5.2-tone-DNA", "5.6-location-pages", "5.7-homepage", "5.8-about-contact-faq", "5.9-grammar-audit", "5.10-validate"]
     },
     "phase-06-humanizer": {
-      "status": "not-started",
-      "completion": 0,
-      "done": [],
-      "missing": ["6.1-calibrate", "6.2-scan", "6.3-fix", "6.4-grammar-recheck", "6.5-verify"]
+      "status": "partial",
+      "completion": 10,
+      "done": ["6.1-calibrate"],
+      "missing": ["6.2-scan", "6.3-fix", "6.4-grammar-recheck", "6.5-verify"]
     },
     "phase-07-design": {
       "status": "partial",
@@ -48,9 +48,9 @@
     },
     "phase-08-build": {
       "status": "partial",
-      "completion": 80,
-      "done": ["8.1-project-init", "8.2-global-layout", "8.3-homepage", "8.4-service-pages", "8.5-location-pages", "8.6-blog-posts", "8.7-remaining-pages"],
-      "missing": ["8.8-local-elements-whatsapp-popup-cookie", "8.9-contextual-internal-linking-verify", "8.10-validate-build"]
+      "completion": 85,
+      "done": ["8.1-project-init", "8.2-global-layout", "8.3-homepage", "8.4-service-pages", "8.5-location-pages", "8.6-blog-posts", "8.7-remaining-pages", "8.8-local-elements-whatsapp-popup-cookie"],
+      "missing": ["8.9-contextual-internal-linking-verify", "8.10-validate-build"]
     },
     "phase-09-seo": {
       "status": "not-started",
@@ -59,10 +59,10 @@
       "missing": ["9.1-meta-tags", "9.2-headings", "9.3-content-quality", "9.4-image-seo", "9.5-url-structure", "9.6-internal-links", "9.7-crawlability", "9.8-indexation", "9.9-schema", "9.10-performance", "9.11-mobile", "9.12-security", "9.13-accessibility", "9.14-social", "9.15-validate"]
     },
     "phase-10-legal-analytics": {
-      "status": "not-started",
-      "completion": 0,
-      "done": [],
-      "missing": ["10.1-privacy-policy", "10.2-terms-cookie", "10.3-cookie-banner", "10.4-GA4-GTM", "10.5-conversions", "10.6-enhanced-conversions-clarity", "10.7-llms-indexnow-sitemap", "10.8-GBP-NAP-citations"]
+      "status": "partial",
+      "completion": 25,
+      "done": ["10.1-privacy-policy", "10.2-terms-cookie"],
+      "missing": ["10.3-cookie-banner", "10.4-GA4-GTM", "10.5-conversions", "10.6-enhanced-conversions-clarity", "10.7-llms-indexnow-sitemap", "10.8-GBP-NAP-citations"]
     },
     "phase-11-prelaunch": {
       "status": "not-started",
@@ -78,12 +78,12 @@
     }
   },
   "pages": {
-    "built": 24,
-    "planned": 31,
-    "contentWritten": 0,
-    "humanized": 0,
-    "briefsCompleted": 0
+    "built": 18,
+    "planned": 38,
+    "contentWritten": 14,
+    "humanized": 1,
+    "briefsCompleted": 9
   },
-  "skills_version": "v5.0",
+  "skills_version": "v5.1",
   "newSkillsInstalled": ["caveman", "niche-empire-hunter", "prompt-enhancer", "younus-upwork-proposals"]
 }
